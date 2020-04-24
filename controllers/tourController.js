@@ -38,6 +38,11 @@ exports.allowedBody = (req, res, next) => {
   }
   next();
 };
+exports.aliasTopCheapTours = (req, res, next) => {
+  req.query.limit = 5;
+  req.query.sort = 'price';
+  next();
+};
 exports.getAllTours = async (req, res) => {
   try {
     // build query
