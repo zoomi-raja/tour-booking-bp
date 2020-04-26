@@ -1,5 +1,6 @@
 const Tour = require('./../models/tourModel');
 const APIFeatures = require('./../utils/apiFeatures');
+const AppError = require('./../utils/appError');
 // const tours = JSON.parse(
 //   fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
 // );
@@ -58,27 +59,27 @@ exports.getAllTours = async (req, res) => {
   }
 };
 
-exports.getTour = async (req, res) => {
+exports.getTour = async (req, res, next) => {
   try {
     // const foundTour = await Tour.find({ _id: req.params.id });
     const foundTour = await Tour.findById(req.params.id);
+    if (!foundTour) {
+      return next(new AppError('No such id exists', 404));
+    }
     res.status(200).json({ status: 'success', data: { tour: foundTour } });
   } catch (err) {
     return res.status(404).send({ status: 'fail', message: err });
   }
 };
-exports.createTour = async (req, res) => {
-  // const newTour = new Tour(req.body);
-  // newTour.save();
-  // if wants to return error if field dont match
-  try {
-    const newTour = await Tour.create(req.body);
-
-    res.status(201).json({ status: 'success', data: { tour: newTour } });
-  } catch (err) {
-    res.status(400).json({ status: 'fail', message: err });
-  }
+const catchAsync = (fn) => {
+  return (req, res, next) => {
+    fn(req, res, next).catch((err) => next(err));
+  };
 };
+exports.createTour = catchAsync(async (req, res, next) => {
+  const newTour = await Tour.create(req.body);
+  res.status(201).json({ status: 'success', data: { tour: newTour } });
+});
 
 exports.updateTour = async (req, res) => {
   try {
