@@ -30,9 +30,27 @@ const userSchema = mongoose.Schema({
       message: 'Passwords are not same',
     },
   },
+  passwordChangedAt: Date,
 });
 userSchema.methods.decodePassword = async function (candidatePass, userPass) {
   return await bcrypt.compare(candidatePass, userPass);
+};
+userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = parseInt(
+      this.passwordChangedAt.getTime() / 1000,
+      10
+    );
+    return JWTTimestamp < changedTimestamp;
+  }
+  return false;
+};
+// to remove password form final output
+userSchema.methods.toJSON = function () {
+  const user = this;
+  const userObject = user.toObject();
+  delete userObject.password;
+  return userObject;
 };
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
