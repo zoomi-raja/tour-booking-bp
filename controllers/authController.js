@@ -1,7 +1,9 @@
 const User = require('./../models/userModel');
 const jwt = require('jsonwebtoken');
 const AppError = require('./../utils/appError');
+const sendEmail = require('./../utils/email');
 const { promisify } = require('util');
+const crypto = require('crypto');
 const catchAsync = (fn) => {
   return (req, res, next) => {
     fn(req, res, next).catch((err) => next(err));
@@ -69,3 +71,60 @@ exports.restrictTo = (...roles) => {
     next();
   };
 };
+
+exports.forgetPassword = catchAsync(async (req, res, next) => {
+  const user = await User.findOne({ email: req.body.email });
+  if (!user) {
+    return next(
+      new AppError('There is no user with provided email address', 404)
+    );
+  }
+  const resetToken = user.createPasswordResetToken();
+  user.save({ validateBeforeSave: false });
+
+  const resetUrl = `${req.protocol}://${req.get(
+    'host'
+  )}/api/v1/users/resetPassword/${resetToken}`;
+  const message = `Forgot your password?Submit a patch request with your new password and password confirm to : ${resetUrl}. \nif you didnt forget your password, please ignoure`;
+  try {
+    sendEmail({
+      email: req.body.email,
+      subject: 'Your password reset request',
+      message,
+    });
+    res.status(200).json({
+      status: 'success',
+      message: 'token has been sent to email',
+      token: message,
+    });
+  } catch (err) {
+    user.passwordResetToken = undefined;
+    user.passwordResetExpires = undefined;
+    user.save({ validateBeforeSave: false });
+    return next(
+      new AppError('There was a error sending email try agian latter', 500)
+    );
+  }
+});
+exports.resetPassword = catchAsync(async (req, res, next) => {
+  const hashedToken = crypto
+    .createHash('sha256')
+    .update(req.params.token)
+    .digest('hex');
+
+  const user = await User.findOne({
+    passwordResetToken: hashedToken,
+    passwordResetExpires: { $gt: Date.now() },
+  });
+  if (!user) {
+    return next(new AppError('Token is invalid or expired', 400));
+  }
+  user.password = req.body.password;
+  user.passwordConfirm = req.body.passwordConfirm;
+  user.passwordResetToken = undefined;
+  user.passwordResetExpires = undefined;
+  await user.save();
+  //   update passwordChangedAt property in middleware
+  const token = signToken({ id: user._id });
+  res.status(201).json({ status: 'success', token, data: { user: user } });
+});
