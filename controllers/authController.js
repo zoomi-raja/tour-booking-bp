@@ -128,3 +128,16 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   const token = signToken({ id: user._id });
   res.status(201).json({ status: 'success', token, data: { user: user } });
 });
+
+exports.updatePassword = catchAsync(async (req, res, next) => {
+  const user = await User.findById(req.user._id).select('+password');
+  if (!(await user.decodePassword(req.body.currentPassword, user.password))) {
+    return next(new AppError('Password is wrong'), 401);
+  }
+  user.password = req.body.password;
+  user.passwordConfirm = req.body.passwordConfirm;
+  await user.save();
+
+  const token = signToken({ id: user._id });
+  res.status(200).json({ status: 'success', token, data: { user: user } });
+});

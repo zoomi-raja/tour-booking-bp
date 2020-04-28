@@ -41,6 +41,7 @@ const userSchema = mongoose.Schema({
   passwordResetExpires: Date,
 });
 userSchema.methods.decodePassword = async function (candidatePass, userPass) {
+  if (!candidatePass || !userPass) return false;
   return await bcrypt.compare(candidatePass, userPass);
 };
 userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
