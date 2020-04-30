@@ -9,6 +9,7 @@ const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
+const hpp = require('hpp');
 
 const app = express();
 // security http headers
@@ -19,6 +20,19 @@ app.use(express.json({ limit: '10kb' }));
 app.use(mongoSanitize());
 // data sanitize against xss(malicious html code)
 app.use(xss());
+// clean http params polution by removing same name parms
+app.use(
+  hpp({
+    whitelist: [
+      'duration',
+      'ratingsQuantity',
+      'ratingsAverage',
+      'difficulty',
+      'maxGroupSize',
+      'price',
+    ],
+  })
+);
 // development logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
