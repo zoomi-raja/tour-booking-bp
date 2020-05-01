@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('./userModel');
 // scehema
 const tourSchema = mongoose.Schema({
   name: {
@@ -74,6 +75,31 @@ const tourSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  startLocation: {
+    // GeoJSON
+    type: {
+      type: String,
+      default: 'Point',
+      enum: ['Point'],
+    },
+    cordinates: [Number], //long/lat sequence
+    address: String,
+    description: String,
+  },
+  locations: [
+    {
+      type: {
+        type: String,
+        default: 'Point',
+        enum: ['Point'],
+      },
+      cordinates: [Number],
+      address: String,
+      description: String,
+      day: Number,
+    },
+  ],
+  guides: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 });
 tourSchema.pre(/^find/, function (next) {
   this.start = Date.now();
@@ -83,5 +109,14 @@ tourSchema.post(/^find/, function (docs, next) {
   console.log(`Query took ${Date.now() - this.start} milliseconds`);
   next();
 });
+// tourSchema.pre('save', async function (next) {
+//   if (this.guides) {
+//     const guidePromises = this.guides.map(
+//       async (userID) => await User.findById(userID)
+//     );
+//     this.guides = await Promise.all(guidePromises);
+//   }
+//   next();
+// });
 const Tour = mongoose.model('Tour', tourSchema);
 module.exports = Tour;

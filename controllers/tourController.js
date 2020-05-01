@@ -27,9 +27,18 @@ exports.allowedBody = (req, res, next) => {
     'images',
     'createdAt',
     'startDates',
+    'secretTour',
+    'startLocation',
+    'locations',
+    'guides',
   ];
   const reqBody = Object.keys(req.body);
   const isValidRequest = reqBody.every((field) => {
+    if (
+      !allowedParams.includes(field) &&
+      process.env.NODE_ENV === 'development'
+    )
+      console.log(field);
     return allowedParams.includes(field);
   });
   if (!isValidRequest) {
@@ -62,7 +71,7 @@ exports.getAllTours = async (req, res) => {
 exports.getTour = async (req, res, next) => {
   try {
     // const foundTour = await Tour.find({ _id: req.params.id });
-    const foundTour = await Tour.findById(req.params.id);
+    const foundTour = await Tour.findById(req.params.id).populate('guides'); //{path:'guides',select:'-_v,-passwordChangedAt'}
     if (!foundTour) {
       return next(new AppError('No such id exists', 404));
     }
