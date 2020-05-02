@@ -63,7 +63,6 @@ exports.getAllTours = async (req, res) => {
       .status(200)
       .json({ status: 'success', results: tours.length, data: { tours } });
   } catch (err) {
-    console.log(err);
     res.status(404).json({ status: 'fail', message: err });
   }
 };
@@ -71,7 +70,9 @@ exports.getAllTours = async (req, res) => {
 exports.getTour = async (req, res, next) => {
   try {
     // const foundTour = await Tour.find({ _id: req.params.id });
-    const foundTour = await Tour.findById(req.params.id).populate('guides'); //{path:'guides',select:'-_v,-passwordChangedAt'}
+    const foundTour = await Tour.findById(req.params.id)
+      .populate('guides')
+      .populate('reviews'); //{path:'guides',select:'-_v,-passwordChangedAt'}
     if (!foundTour) {
       return next(new AppError('No such id exists', 404));
     }
