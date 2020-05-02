@@ -2,6 +2,7 @@ const express = require('express');
 const tourController = require('../controllers/tourController');
 const authController = require('../controllers/authController');
 const reviewController = require('../controllers/reviewController');
+const reviewRoute = require('./reviewRoutes');
 const router = express.Router();
 // router.param('id', tourController.checkID);
 router
@@ -23,11 +24,12 @@ router
     tourController.deleteTour
   );
 
-router //or other besto option would be router.use('/:tourId/reviews',reviewRouter) and in reviewRouter file add const router = express.Router({mergeParams:true})
+router //or other besto option would be router.use('/:tourId/reviews',reviewRouter) and in reviewRoutes file add const router = express.Router({mergeParams:true})
   .route('/:tourId/reviews')
+  .get(authController.protect, reviewController.getAllReviews)
   .post(
     authController.protect,
-    authController.restrictTo('user'),
+    authController.restrictTo('user', 'admin'),
     reviewController.createReview
   );
 module.exports = router;
