@@ -23,7 +23,7 @@ router
     tourController.deleteTour
   );
 
-router
+router //or other besto option would be router.use('/:tourId/reviews',reviewRouter) and in reviewRouter file add const router = express.Router({mergeParams:true})
   .route('/:tourId/reviews')
   .post(
     authController.protect,
