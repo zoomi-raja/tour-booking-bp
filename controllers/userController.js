@@ -1,5 +1,6 @@
 const AppError = require('./../utils/appError');
 const User = require('./../models/userModel');
+const factory = require('./handlerFactory');
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
   Object.keys(obj).forEach((el) => {
@@ -8,6 +9,10 @@ const filterObj = (obj, ...allowedFields) => {
     }
   });
   return newObj;
+};
+exports.getMe = (req, res, next) => {
+  req.params.id = req.user.id;
+  next();
 };
 exports.updateMe = async (req, res, next) => {
   if (req.body.password || req.body.passwordConfrim) {
@@ -25,11 +30,7 @@ exports.getAllUsers = (req, res) => {
     .status(500)
     .json({ status: 'err', message: 'this route not yet defined' });
 };
-exports.getUser = (req, res) => {
-  res
-    .status(500)
-    .json({ status: 'err', message: 'this route not yet defined' });
-};
+exports.getUser = factory.getOne(User);
 exports.createUser = (req, res) => {
   res
     .status(500)

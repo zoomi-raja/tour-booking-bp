@@ -13,7 +13,7 @@ const factory = require('./handlerFactory');
 //     .json({ status: 'success', results: reviews.length, data: { reviews } });
 // });
 exports.getAllReviews = factory.getAll(Review, (req, res) => {
-  if (req.params.tourId) req.query._id = req.params.tourId;
+  if (req.params.tourId) req.query.tour = req.params.tourId;
 });
 // exports.createReview = catchAsync(async (req, res, next) => {
 //   if (!req.body.tour) req.body.tour = req.params.tourId;

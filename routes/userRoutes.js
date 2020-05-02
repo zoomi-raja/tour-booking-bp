@@ -9,6 +9,12 @@ router.post('/login', authController.login);
 router.post('/forgetPassword', authController.forgetPassword);
 router.patch('/resetPassword/:token', authController.resetPassword);
 
+router.get(
+  '/me',
+  authController.protect,
+  userController.getMe,
+  userController.getUser
+);
 router.patch('/udpateMe', authController.protect, userController.updateMe);
 
 router.patch(
@@ -16,6 +22,8 @@ router.patch(
   authController.protect,
   authController.updatePassword
 );
+
+router.use(authController.protect, authController.restrictTo('admin'));
 router
   .route('/')
   .get(userController.getAllUsers)
