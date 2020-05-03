@@ -58,7 +58,7 @@ exports.getAllTours = async (req, res) => {
     const features = new APIFeatures(Tour, req.query);
     features.filter().sort().limitFields().paginate();
 
-    const tours = await features.query;
+    const tours = await features.query; //.explain();
     res
       .status(200)
       .json({ status: 'success', results: tours.length, data: { tours } });
