@@ -46,7 +46,8 @@ const limiter = rateLimit({
   message: 'too many requests from this ip',
 });
 app.use('/api', limiter);
-app.use(express.static(`${__dirname}/public`));
+const path = express.static(`${__dirname}/public`);
+app.use(path);
 
 // app.get('/api/v1/tours', getAllTours);
 // app.get('/api/v1/tours/:id', getTour);
@@ -58,7 +59,7 @@ app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
 // handle 404
-app.all('*', (req, res, next) => {
+app.all('/api/*', (req, res, next) => {
   // res
   //   .status(404)
   //   .json({ status: 'fail', message: `Can't find ${req.originalUrl}` });
@@ -68,7 +69,7 @@ app.all('*', (req, res, next) => {
   // error.status = 'fail';
   next(new AppError(`Can't find ${req.originalUrl}`, 400));
 });
-
+app.use('*', path);
 app.use(globalErrorHandler);
 
 module.exports = app;

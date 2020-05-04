@@ -84,7 +84,7 @@ const tourSchema = mongoose.Schema(
         default: 'Point',
         enum: ['Point'],
       },
-      cordinates: [Number], //long/lat sequence
+      coordinates: [Number], //long/lat sequence
       address: String,
       description: String,
     },
@@ -95,7 +95,7 @@ const tourSchema = mongoose.Schema(
           default: 'Point',
           enum: ['Point'],
         },
-        cordinates: [Number],
+        coordinates: [Number],
         address: String,
         description: String,
         day: Number,
@@ -109,6 +109,8 @@ const tourSchema = mongoose.Schema(
   }
 );
 tourSchema.index({ price: 1, ratingsAverage: -1 });
+tourSchema.index({ slug: 1 });
+tourSchema.index({ startLocation: '2dsphere' });
 tourSchema.pre(/^find/, function (next) {
   this.start = Date.now();
   next();
