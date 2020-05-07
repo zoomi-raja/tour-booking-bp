@@ -137,7 +137,7 @@ a {
   padding-bottom: 1.5rem;
   transition: border-color 0.5s, padding-bottom 0.5s;
 }
-.nav-list ul li a:hover {
+.nav-list ul li:hover a {
   border-bottom: 3px var(--main-color) solid;
   padding-bottom: 0.5rem;
 }
@@ -297,4 +297,32 @@ a {
 }
 .card .card__text-wrap .card__sub-heading {
   margin-top: 48%;
+}
+
+/* footer */
+#main-footer {
+  background-color: var(--secondary-color);
+  color: var(--gray-color-light1);
+}
+#main-footer p {
+  font-size: 1.4rem;
+}
+#main-footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.social .social__icon {
+  margin-right: 1rem;
+}
+.social .social__icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 2px var(--gray-color-light1) solid;
+  padding: 0.9rem;
+  fill: var(--gray-color-light1);
+}
+.social .social__icon:hover {
+  background-color: var(--main-color);
 }
