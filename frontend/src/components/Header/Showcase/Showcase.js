@@ -1,8 +1,9 @@
 import React from 'react';
+import classes from './Showcase.module.scss';
 const showcase = (props) => (
-  <div className="showcase">
-    <div className="showcase__container">
-      <div className="showcase__content">
+  <div className={classes.showcase}>
+    <div className={classes.showcase__container}>
+      <div className={classes.showcase__content}>
         <p>
           <b>Mark Twain said </b>“Travel is fatal to prejudice, bigotry, and
           narrow-mindedness, and many of our people need it sorely on these
