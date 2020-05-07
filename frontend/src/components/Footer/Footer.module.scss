@@ -1,0 +1,26 @@
+#main_footer {
+  background-color: var(--secondary-color);
+  color: var(--gray-color-light1);
+  p {
+    font-size: 1.4rem;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .social {
+    &__icon {
+      margin-right: 1rem;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      border: 2px var(--gray-color-light1) solid;
+      padding: 0.9rem;
+      fill: var(--gray-color-light1);
+      &:hover {
+        background-color: var(--main-color);
+      }
+    }
+  }
+}

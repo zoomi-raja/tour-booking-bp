@@ -1,14 +1,8 @@
 import React from 'react';
-import Layout from './hoc/Layout/Layout';
+import Home from './containers/Home/Home';
 
 function App() {
-  return (
-    <div className="App">
-      <Layout>
-        <div>Body</div>
-      </Layout>
-    </div>
-  );
+  return <Home />;
 }
 
 export default App;
