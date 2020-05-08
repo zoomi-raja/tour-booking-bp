@@ -58,8 +58,8 @@ a {
 .btn:hover {
   -webkit-transform: translateY(-3px);
   transform: translateY(-3px);
-  -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.35);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.35);
 }
 .btn--small {
   padding: 1.25rem 3rem !important;
@@ -72,6 +72,13 @@ a {
 .btn--secondary {
   background-color: var(--secondary-color);
   color: #fff;
+}
+.bottom-line {
+  height: 2px;
+  width: 50%;
+  background-color: #ffbc00;
+  display: block;
+  margin: 0 auto 1rem auto;
 }
 /* paddings */
 .pt-6 {

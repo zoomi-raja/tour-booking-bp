@@ -1,0 +1,38 @@
+.detail_cover {
+  height: 50vh;
+  img {
+    object-fit: cover;
+  }
+}
+
+.container {
+  margin-top: -5rem;
+  background-color: var(--background-color);
+  max-width: 90rem;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.detail-heading {
+  color: var(--secondary-color);
+  text-align: center;
+  font-size: 1.5rem;
+  &__info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+  }
+}
+.detail-icons {
+  display: flex;
+  align-items: center;
+  &:not(:last-child) {
+    margin-right: 5rem;
+  }
+  &__icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    fill: var(--main-color);
+    margin-right: 1rem;
+  }
+}

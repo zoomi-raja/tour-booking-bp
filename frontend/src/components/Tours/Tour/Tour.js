@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import classes from './Tour.module.scss';
 import svgSprite from '../../../assets/icons.svg';
 import tempImg from '../../../assets/qudra-lake.jpg';
@@ -47,12 +48,9 @@ const Tour = (props) => (
           </p>
         </div>
         <div className={classes.card__footer_right}>
-          <a
-            className="btn btn--secondary btn--small"
-            href="/tour/the-sea-explorer"
-          >
+          <Link className="btn btn--secondary btn--small" to="/tour/2">
             Details
-          </a>
+          </Link>
         </div>
       </div>
     </div>

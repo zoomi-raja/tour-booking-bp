@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import appLogo from '../../assets/logo.png';
 import classes from './logo.module.scss';
 const logo = (props) => (
-  <div className={classes.logo}>
+  <Link className={classes.logo} to="/">
     <img src={appLogo} alt="logo" />
-  </div>
+  </Link>
 );
 export default logo;
