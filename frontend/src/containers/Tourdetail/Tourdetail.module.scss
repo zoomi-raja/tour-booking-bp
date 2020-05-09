@@ -1,12 +1,12 @@
 .detail_cover {
-  height: 50vh;
+  height: 30vh;
   img {
     object-fit: cover;
   }
 }
 
 .container {
-  margin-top: -5rem;
+  margin-top: -12rem;
   background-color: var(--background-color);
   max-width: 90rem;
   border-top-left-radius: 5px;
@@ -35,4 +35,52 @@
     fill: var(--main-color);
     margin-right: 1rem;
   }
+}
+.description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  font-size: 1.6rem;
+  img {
+    width: initial;
+    height: initial;
+  }
+  &__text {
+    padding: 3rem;
+  }
+  &__photo {
+    flex: 0 0 34%;
+    margin: 0 auto;
+    position: relative;
+    img {
+      width: 62%;
+      position: absolute;
+      box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+      transition: all 0.2s;
+      &:nth-child(1) {
+        left: 0;
+        top: -10rem;
+      }
+      &:nth-child(2) {
+        right: 0%;
+        top: -8rem;
+      }
+      &:nth-child(3) {
+        top: -2rem;
+        left: 20%;
+      }
+      &:hover {
+        outline-offset: 0.2rem;
+        outline: 0.5rem solid var(--main-color);
+        transform: scale(1.05) translateY(-0.5rem);
+        box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+        z-index: 20;
+      }
+    }
+  }
+}
+
+.mapContainer {
+  height: 30vh;
 }
