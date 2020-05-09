@@ -84,3 +84,13 @@ a {
 .pt-6 {
   padding-top: 6rem;
 }
+/* margins */
+.mt-1 {
+  margin-top: 1rem;
+}
+.mt-2 {
+  margin-top: 2rem;
+}
+.mt-3 {
+  margin-top: 3rem;
+}

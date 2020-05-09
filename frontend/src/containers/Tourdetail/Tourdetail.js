@@ -202,6 +202,9 @@ class Tourdetail extends React.Component {
                   <span className={classes['detail-box__text']}>4.8/5</span>
                 </li>
               </ul>
+              <a className="btn btn--primary btn--small mt-1" href="/tour/2">
+                Book now
+              </a>
             </div>
           </div>
           <div
