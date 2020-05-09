@@ -84,3 +84,10 @@
 .mapContainer {
   height: 30vh;
 }
+.marker {
+  background-image: url('./map-marker.png');
+  background-size: cover;
+  width: 32px;
+  height: 40px;
+  cursor: pointer;
+}
