@@ -107,6 +107,12 @@ class Tourdetail extends React.Component {
                 </svg>
                 <span>Qudra lake</span>
               </div>
+              <div className={classes['detail-icons']}>
+                <svg className={classes['detail-icons__icon']}>
+                  <use xlinkHref={`${svgSprite}#icon-user`}></use>
+                </svg>
+                <span>15 People</span>
+              </div>
             </div>
           </div>
           <div className="bottom-line"></div>
@@ -187,19 +193,17 @@ class Tourdetail extends React.Component {
                 </li>
                 <li className={classes['detail-box__detail']}>
                   <svg className={classes['detail-box__icon']}>
-                    <use xlinkHref={`${svgSprite}#icon-user`}></use>
-                  </svg>
-                  <span className={classes['detail-box__label']}>
-                    participants
-                  </span>
-                  <span className={classes['detail-box__text']}>15 People</span>
-                </li>
-                <li className={classes['detail-box__detail']}>
-                  <svg className={classes['detail-box__icon']}>
                     <use xlinkHref={`${svgSprite}#icon-star`}></use>
                   </svg>
                   <span className={classes['detail-box__label']}>rating</span>
                   <span className={classes['detail-box__text']}>4.8/5</span>
+                </li>
+                <li className={classes['detail-box__detail']}>
+                  <svg className={classes['detail-box__icon']}>
+                    <use xlinkHref={`${svgSprite}#icon-price-tag`}></use>
+                  </svg>
+                  <span className={classes['detail-box__label']}>price</span>
+                  <span className={classes['detail-box__text']}>23 USD</span>
                 </li>
               </ul>
               <a className="btn btn--primary btn--small mt-1" href="/tour/2">
@@ -211,6 +215,161 @@ class Tourdetail extends React.Component {
             ref={(el) => (this.mapContainer = el)}
             className={classes.mapContainer}
           />
+          <div className={classes.review}>
+            <div className={classes.review__card}>
+              <figure className={classes.review__img}>
+                <img src={tourGuide} alt="user" />
+              </figure>
+              <div className={classes.review__desc}>
+                <div className={classes.review__header}>
+                  <p>
+                    zoomi<span>Created at: Sep 2019</span>
+                  </p>
+                  <div className={classes.review__rating}>
+                    <svg
+                      className={[
+                        classes.reviews__star,
+                        classes['reviews__star--active'],
+                      ].join(' ')}
+                    >
+                      <use xlinkHref={`${svgSprite}#icon-star`}></use>
+                    </svg>
+                    <svg
+                      className={[
+                        classes.reviews__star,
+                        classes['reviews__star--active'],
+                      ].join(' ')}
+                    >
+                      <use xlinkHref={`${svgSprite}#icon-star`}></use>
+                    </svg>
+                    <svg
+                      className={[
+                        classes.reviews__star,
+                        classes['reviews__star--active'],
+                      ].join(' ')}
+                    >
+                      <use xlinkHref={`${svgSprite}#icon-star`}></use>
+                    </svg>
+                    <svg className={classes.reviews__star}>
+                      <use xlinkHref={`${svgSprite}#icon-star`}></use>
+                    </svg>
+                    <svg className={classes.reviews__star}>
+                      <use xlinkHref={`${svgSprite}#icon-star`}></use>
+                    </svg>
+                  </div>
+                </div>
+                <div className={classes.review__text}>
+                  want to complete the template. Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Eum, perspiciatis ad
+                  voluptatibus ullam iusto natus praesentium pariatur temporibus
+                  sapiente ea quis consectetur magni velit, vitae consequatur,
+                  soluta quisquam dolorem?
+                </div>
+              </div>
+            </div>
+            <div className={classes.review__card}>
+              <figure className={classes.review__img}>
+                <img src={tourGuide} alt="user" />
+              </figure>
+              <div className={classes.review__desc}>
+                <div className={classes.review__header}>
+                  <p>
+                    zoomi<span>Created at: Sep 2019</span>
+                  </p>
+                  <div className={classes.review__rating}>
+                    <svg
+                      className={[
+                        classes.reviews__star,
+                        classes['reviews__star--active'],
+                      ].join(' ')}
+                    >
+                      <use xlinkHref={`${svgSprite}#icon-star`}></use>
+                    </svg>
+                    <svg
+                      className={[
+                        classes.reviews__star,
+                        classes['reviews__star--active'],
+                      ].join(' ')}
+                    >
+                      <use xlinkHref={`${svgSprite}#icon-star`}></use>
+                    </svg>
+                    <svg
+                      className={[
+                        classes.reviews__star,
+                        classes['reviews__star--active'],
+                      ].join(' ')}
+                    >
+                      <use xlinkHref={`${svgSprite}#icon-star`}></use>
+                    </svg>
+                    <svg className={classes.reviews__star}>
+                      <use xlinkHref={`${svgSprite}#icon-star`}></use>
+                    </svg>
+                    <svg className={classes.reviews__star}>
+                      <use xlinkHref={`${svgSprite}#icon-star`}></use>
+                    </svg>
+                  </div>
+                </div>
+                <div className={classes.review__text}>
+                  want to complete the template. Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Eum, perspiciatis ad
+                  voluptatibus ullam iusto natus praesentium pariatur temporibus
+                  sapiente ea quis consectetur magni velit, vitae consequatur,
+                  soluta quisquam dolorem?
+                </div>
+              </div>
+            </div>
+            <div className={classes.review__card}>
+              <figure className={classes.review__img}>
+                <img src={tourGuide} alt="user" />
+              </figure>
+              <div className={classes.review__desc}>
+                <div className={classes.review__header}>
+                  <p>
+                    zoomi<span>Created at: Sep 2019</span>
+                  </p>
+                  <div className={classes.review__rating}>
+                    <svg
+                      className={[
+                        classes.reviews__star,
+                        classes['reviews__star--active'],
+                      ].join(' ')}
+                    >
+                      <use xlinkHref={`${svgSprite}#icon-star`}></use>
+                    </svg>
+                    <svg
+                      className={[
+                        classes.reviews__star,
+                        classes['reviews__star--active'],
+                      ].join(' ')}
+                    >
+                      <use xlinkHref={`${svgSprite}#icon-star`}></use>
+                    </svg>
+                    <svg
+                      className={[
+                        classes.reviews__star,
+                        classes['reviews__star--active'],
+                      ].join(' ')}
+                    >
+                      <use xlinkHref={`${svgSprite}#icon-star`}></use>
+                    </svg>
+                    <svg className={classes.reviews__star}>
+                      <use xlinkHref={`${svgSprite}#icon-star`}></use>
+                    </svg>
+                    <svg className={classes.reviews__star}>
+                      <use xlinkHref={`${svgSprite}#icon-star`}></use>
+                    </svg>
+                  </div>
+                </div>
+                <div className={classes.review__text}>
+                  want to complete the template. Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Eum, perspiciatis ad
+                  voluptatibus ullam iusto natus praesentium pariatur temporibus
+                  sapiente ea quis consectetur magni velit, vitae consequatur,
+                  soluta quisquam dolorem?
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     );
