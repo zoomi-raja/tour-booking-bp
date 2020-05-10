@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../../hoc/Layout/Layout';
-import Tours from '../../components/Tours/Tours';
-import NotFound from '../../components/Notfound/Notfound';
+import Tours from '../../containers/Tours/Tours';
+import NotFound from '../Notfound/Notfound';
 import Tourdetail from '../../containers/Tourdetail/Tourdetail';
 import { Switch, Route } from 'react-router-dom';
 

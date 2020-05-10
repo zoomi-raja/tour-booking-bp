@@ -196,7 +196,7 @@
     align-items: center;
     padding: 1.5rem 1.5rem;
     &:not(:last-child) {
-      border-bottom: 1px dashed var(--gray-color-dark);
+      border-bottom: 1px dashed var(--gray-color-light2);
     }
     .review {
       &__img {
