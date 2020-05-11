@@ -64,7 +64,7 @@ class Map extends React.Component {
         .addTo(map);
       bounds.extend(loc.coordinates);
     });
-    map.fitBounds(bounds, { padding: 20 });
+    map.fitBounds(bounds, { padding: 40 });
   }
   render() {
     return (
