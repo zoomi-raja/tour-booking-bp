@@ -47,7 +47,7 @@ router
 
 router //or other besto option would be router.use('/:tourId/reviews',reviewRouter) and in reviewRoutes file add const router = express.Router({mergeParams:true})
   .route('/:tourId/reviews')
-  .get(authController.protect, reviewController.getAllReviews)
+  .get(reviewController.getAllReviews)
   .post(
     authController.protect,
     authController.restrictTo('user', 'admin'),

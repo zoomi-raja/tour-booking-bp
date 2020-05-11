@@ -70,9 +70,8 @@ exports.getAllTours = async (req, res) => {
 exports.getTour = async (req, res, next) => {
   try {
     // const foundTour = await Tour.find({ _id: req.params.id });
-    const foundTour = await Tour.findById(req.params.id)
-      .populate('guides')
-      .populate('reviews'); //{path:'guides',select:'-_v,-passwordChangedAt'}
+    const foundTour = await Tour.findById(req.params.id).populate('guides');
+    //.populate('reviews'); //{path:'guides',select:'-_v,-passwordChangedAt'}
     if (!foundTour) {
       return next(new AppError('No such id exists', 404));
     }

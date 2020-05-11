@@ -13,7 +13,7 @@ router
 
 router
   .route('/:id')
-  .get(authController.protect, reviewController.getReview)
+  .get(reviewController.getReview)
   .delete(
     authController.protect,
     authController.restrictTo('user', 'admin'),

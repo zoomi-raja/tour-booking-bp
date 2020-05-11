@@ -14,19 +14,41 @@ class Tourdetail extends React.Component {
     this.state = {
       tour: {},
       loading: true,
+      error: { status: false, message: '' },
     };
   }
-  async componentDidMount() {
+  componentDidMount() {
+    this.makeApiCall();
+  }
+  makeApiCall = async () => {
     try {
       const tour = await axios.get(`/tours/${this.props.match.params.id}`);
       this.setState({ tour: tour.data.data.tour, loading: false });
     } catch (err) {
+      this.setState({
+        error: {
+          status: true,
+          message: err.message,
+        },
+      });
       alert(err.message + ': in tourDetail.js');
     }
-  }
+  };
   render() {
     let html;
-    if (this.state.loading) {
+    if (this.state.error.status) {
+      html = (
+        <p style={{ padding: '5rem', fontSize: '1.6rem' }}>
+          {this.state.error.message}
+          <span
+            style={{ marginLeft: '1rem', cursor: 'pointer' }}
+            onClick={this.makeApiCall}
+          >
+            click to retry
+          </span>
+        </p>
+      );
+    } else if (this.state.loading) {
       html = <Spinner style={{ margin: '36vh auto' }} />;
     } else {
       html = (
@@ -80,7 +102,7 @@ class Tourdetail extends React.Component {
               }}
             />
             <Map locations={this.state.tour.locations} />
-            <Reviews data={this.state.tour.reviews} />
+            <Reviews tourId={this.props.match.params.id} />
           </div>
         </section>
       );
