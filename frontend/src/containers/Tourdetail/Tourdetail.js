@@ -21,7 +21,7 @@ class Tourdetail extends React.Component {
       const tour = await axios.get(`/tours/${this.props.match.params.id}`);
       this.setState({ tour: tour.data.data.tour, loading: false });
     } catch (err) {
-      alert(err.message);
+      alert(err.message + ': in tourDetail.js');
     }
   }
   render() {
@@ -47,27 +47,40 @@ class Tourdetail extends React.Component {
                   <svg className={classes['detail-icons__icon']}>
                     <use xlinkHref={`${svgSprite}#icon-calendar`}></use>
                   </svg>
-                  <span>4 days</span>
+                  <span>{this.state.tour.duration} days</span>
                 </div>
                 <div className={classes['detail-icons']}>
                   <svg className={classes['detail-icons__icon']}>
                     <use xlinkHref={`${svgSprite}#icon-location-pin`}></use>
                   </svg>
-                  <span>Qudra lake</span>
+                  <span>{this.state.tour.startLocation.description}</span>
                 </div>
                 <div className={classes['detail-icons']}>
                   <svg className={classes['detail-icons__icon']}>
                     <use xlinkHref={`${svgSprite}#icon-user`}></use>
                   </svg>
-                  <span>15 People</span>
+                  <span>{this.state.tour.maxGroupSize} People</span>
                 </div>
               </div>
             </div>
             <div className="bottom-line"></div>
-            <TourDescription />
-            <TourStats />
-            <Map />
-            <Reviews />
+            <TourDescription
+              desc={{
+                images: this.state.tour.images,
+                description: this.state.tour.description,
+              }}
+            />
+            <TourStats
+              guides={this.state.tour.guides}
+              details={{
+                startDate: this.state.tour.startDates,
+                difficulty: this.state.tour.difficulty,
+                rating: this.state.tour.ratingsAverage,
+                price: this.state.tour.price,
+              }}
+            />
+            <Map locations={this.state.tour.locations} />
+            <Reviews data={this.state.tour.reviews} />
           </div>
         </section>
       );

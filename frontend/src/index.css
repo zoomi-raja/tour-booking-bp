@@ -50,9 +50,8 @@ a {
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
   font-weight: 400;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
   border: none;
+  outline: none;
   cursor: pointer;
 }
 .btn:hover {
@@ -60,6 +59,10 @@ a {
   transform: translateY(-3px);
   -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.35);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.35);
+}
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 .btn--small {
   padding: 1.25rem 3rem !important;
