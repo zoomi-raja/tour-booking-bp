@@ -1,14 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import classes from './Tour.module.scss';
 import svgSprite from '../../assets/icons.svg';
 import tempImg from '../../assets/qudra-lake.jpg';
+import Button from '../UI/Button/Button';
 const Tour = (props) => {
   const date = new Date(props.tour.startDates[0]).toLocaleString('en-us', {
     month: 'short',
     year: 'numeric',
     day: '2-digit',
   });
+  const history = useHistory();
   return (
     <div className={classes.card}>
       <div className={classes.card__wrap}>
@@ -60,12 +62,15 @@ const Tour = (props) => {
             </p>
           </div>
           <div className={classes.card__footer_right}>
-            <Link
-              className="btn btn--secondary btn--small"
-              to={`/tour/${props.tour.id}`}
+            <Button
+              btnType="btn--secondary"
+              btnSize="btn--small"
+              clicked={() => {
+                history.push(`/tour/${props.tour.id}`);
+              }}
             >
               Details
-            </Link>
+            </Button>
           </div>
         </div>
       </div>

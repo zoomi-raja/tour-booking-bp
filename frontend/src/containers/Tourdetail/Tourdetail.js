@@ -20,36 +20,46 @@ class Tourdetail extends React.Component {
   componentDidMount() {
     this.makeApiCall();
   }
-  makeApiCall = async () => {
+  makeApiCall = async (debug = false) => {
     try {
       const tour = await axios.get(`/tours/${this.props.match.params.id}`);
-      this.setState({ tour: tour.data.data.tour, loading: false });
+      this.setState({
+        tour: tour.data.data.tour,
+        loading: false,
+        error: { status: false },
+      });
     } catch (err) {
       this.setState({
         error: {
           status: true,
           message: err.message,
         },
+        loading: false,
       });
-      alert(err.message + ': in tourDetail.js');
+      if (debug) {
+        alert(err.message + ': in tourDetail.js');
+      }
     }
   };
   render() {
     let html;
-    if (this.state.error.status) {
+    if (this.state.loading) {
+      html = <Spinner style={{ margin: '36vh auto' }} />;
+    } else if (this.state.error.status) {
       html = (
         <p style={{ padding: '5rem', fontSize: '1.6rem' }}>
           {this.state.error.message}
           <span
             style={{ marginLeft: '1rem', cursor: 'pointer' }}
-            onClick={this.makeApiCall}
+            onClick={() => {
+              this.setState({ loading: true });
+              this.makeApiCall(true);
+            }}
           >
             click to retry
           </span>
         </p>
       );
-    } else if (this.state.loading) {
-      html = <Spinner style={{ margin: '36vh auto' }} />;
     } else {
       html = (
         <section id="tour-detail">

@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './TourStats.module.scss';
 import svgSprite from '../../assets/icons.svg';
 import tourGuide from './zoomi.jpeg';
+import Button from '../UI/Button/Button';
 const TourStats = (props) => {
   const date = new Date(props.details.startDate[0]).toLocaleDateString(
     'en-us',
@@ -86,7 +87,16 @@ const TourStats = (props) => {
             </span>
           </li>
         </ul>
-        <button className="btn btn--primary btn--small mt-1">Book now</button>
+        <Button
+          btnType="btn--primary"
+          btnSize="btn--small"
+          classes="mt-1"
+          clicked={() => {
+            alert('yet to implement');
+          }}
+        >
+          Book now
+        </Button>
       </div>
     </div>
   );
