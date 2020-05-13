@@ -41,7 +41,6 @@ const Form = (prop) => {
             htmlFor="keeplog"
             className={classes['form__radioInput--label']}
           >
-            <span className={classes['form__radioInput--button']}></span>
             Keep logged in..!
           </label>
         </div>

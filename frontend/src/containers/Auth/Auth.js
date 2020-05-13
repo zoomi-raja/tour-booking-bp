@@ -32,7 +32,9 @@ class Auth extends React.Component {
       html = <Signup />;
     }
     return (
-      <div className={['container', classes.container].join(' ')}>{html}</div>
+      <div className={classes.remainingHeight}>
+        <div className={['container', classes.container].join(' ')}>{html}</div>
+      </div>
     );
   }
 }

@@ -1,5 +1,12 @@
 .container {
   background-color: var(--background-color);
-  display: flex;
-  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+.remainingHeight {
+  flex: 1;
+  position: relative;
 }

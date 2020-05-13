@@ -35,9 +35,8 @@ a {
 /* utilities */
 .container {
   margin: 0 auto;
-  min-width: var(--max-width);
+  max-width: var(--max-width);
   padding: 2rem;
-  flex: 1;
 }
 
 .bottom-line {
