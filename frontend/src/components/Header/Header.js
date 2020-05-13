@@ -3,11 +3,9 @@ import Navbar from './Navbar/Navbar';
 class Header extends React.Component {
   render() {
     return (
-      <div>
-        <header id="main-header">
-          <Navbar />
-        </header>
-      </div>
+      <header id="main-header">
+        <Navbar />
+      </header>
     );
   }
 }

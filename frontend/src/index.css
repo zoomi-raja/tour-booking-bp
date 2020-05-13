@@ -35,8 +35,9 @@ a {
 /* utilities */
 .container {
   margin: 0 auto;
-  max-width: var(--max-width);
+  min-width: var(--max-width);
   padding: 2rem;
+  flex: 1;
 }
 
 .bottom-line {
@@ -59,4 +60,10 @@ a {
 }
 .mt-3 {
   margin-top: 3rem;
+}
+
+#root {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100vh;
 }

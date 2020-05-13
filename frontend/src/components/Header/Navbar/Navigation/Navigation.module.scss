@@ -19,6 +19,9 @@
       border-bottom: 3px #ccc solid;
       padding-bottom: 1.5rem;
       transition: border-color 0.5s, padding-bottom 0.5s;
+      &.active {
+        border-bottom: 3px var(--main-color) solid;
+      }
     }
   }
 }

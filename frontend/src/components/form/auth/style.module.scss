@@ -1,0 +1,104 @@
+.form {
+  background-color: #fff;
+  min-width: 55rem;
+  margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2.5rem 8rem 2rem;
+  padding: 5rem 7rem;
+  border-radius: 5px;
+  h1 {
+    font-size: 2.25rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--main-color);
+    letter-spacing: 0.1rem;
+    line-height: 1.3;
+    display: inline-block;
+    margin-bottom: 3rem;
+  }
+  &__group:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+  &__input {
+    display: block;
+    font-family: inherit;
+    font-size: 1.5rem;
+    color: inherit;
+    padding: 1.25rem 1.75rem;
+    border: none;
+    width: 100%;
+    background-color: #f2f2f2;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    &:focus {
+      outline: none;
+      border-bottom: 3px solid var(--main-color);
+    }
+    &:placeholder-shown + label {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-4rem);
+    }
+  }
+
+  &__label {
+    // position: absolute;
+    // top: 1.7rem;
+    // left: 2rem;
+    margin-left: 1rem;
+    margin-top: 0.4rem;
+    display: block;
+    transition: all 0.3s;
+    font-size: 1.2rem;
+    color: var(--gray-color-dark);
+    opacity: 1;
+  }
+  &__groupv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__radioInput {
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    input {
+      display: none;
+      &:checked ~ label span::after {
+        opacity: 1;
+      }
+    }
+    &--label {
+      position: relative;
+      font-size: 1.6rem;
+      cursor: pointer;
+      padding-left: 3.5rem;
+    }
+    &--button {
+      height: 2.5rem;
+      width: 2.5rem;
+      border: 2px solid var(--main-color);
+      border-radius: 1rem;
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      &::after {
+        content: '';
+        height: 1.8rem;
+        width: 1.8rem;
+        display: block;
+        border-radius: 5px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-48%, -53%);
+        background-color: var(--main-color);
+        opacity: 0;
+      }
+    }
+  }
+}

@@ -1,16 +1,21 @@
 import React from 'react';
 import classes from './Navigation.module.scss';
+import { NavLink } from 'react-router-dom';
 const navigation = (props) => (
   <nav className={classes.nav_list}>
     <ul>
       <li>
         <span>
-          <a href="#">login</a>
+          <NavLink to="/auth/login" activeClassName={classes.active}>
+            login
+          </NavLink>
         </span>
       </li>
       <li>
         <span>
-          <a href="#">signup</a>
+          <NavLink to="/auth/signup" activeClassName={classes.active}>
+            signup
+          </NavLink>
         </span>
       </li>
     </ul>
