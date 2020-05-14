@@ -3,7 +3,7 @@ import classes from './style.module.scss';
 import Button from '../../UI/Button/Button';
 const Form = (prop) => {
   return (
-    <form className={classes.form}>
+    <form className={classes.form} onSubmit={prop.login}>
       <h1>Sign in form</h1>
       <div className={classes.form__group}>
         <input
@@ -12,8 +12,9 @@ const Form = (prop) => {
           className={classes.form__input}
           type="email"
           required
-          nme="email"
+          name="email"
           id="email"
+          onChange={prop.onFieldChange}
         />
         <label className={classes.form__label} htmlFor="email">
           Email Address
@@ -28,13 +29,16 @@ const Form = (prop) => {
           required
           name="password"
           id="password"
+          onChange={prop.onFieldChange}
         />
         <label className={classes.form__label} htmlFor="password">
           Password
         </label>
       </div>
       <div className={classes.form__groupv}>
-        <Button btnType="btn--primary">Sign In</Button>
+        <Button btnType="btn--primary" type="submit">
+          Sign In
+        </Button>
         <div className={classes.form__radioInput}>
           <input name="keeplog" id="keeplog" type="checkbox" />
           <label

@@ -15,7 +15,7 @@
   outline: none;
   cursor: pointer;
 }
-.btn:hover {
+.btn:not(:disabled):hover {
   -webkit-transform: translateY(-3px);
   transform: translateY(-3px);
   -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.35);
@@ -48,4 +48,5 @@
 .btn:disabled {
   color: #ccc;
   cursor: not-allowed;
+  background-color: #f2f2f2;
 }

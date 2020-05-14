@@ -9,6 +9,7 @@ const button = (props) => (
       classes[props.btnSize],
       props.classes,
     ].join(' ')}
+    type={props.type}
     onClick={props.clicked}
   >
     {props.children}

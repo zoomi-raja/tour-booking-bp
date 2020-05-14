@@ -65,4 +65,5 @@ a {
   display: flex;
   flex-flow: column nowrap;
   min-height: 100vh;
+  justify-content: space-between;
 }
