@@ -6,7 +6,9 @@ const { promisify } = require('util');
 const crypto = require('crypto');
 const catchAsync = (fn) => {
   return (req, res, next) => {
-    fn(req, res, next).catch((err) => next(err));
+    fn(req, res, next).catch((err) => {
+      next(err);
+    });
   };
 };
 const signToken = (obj) => {
@@ -48,7 +50,7 @@ exports.login = catchAsync(async (req, res, next) => {
   }
   const user = await User.findOne({ email }).select('+password');
   if (!user || !(await user.decodePassword(password, user.password))) {
-    return next(new AppError('Incorrect email or password'), 401);
+    return next(new AppError('Incorrect email or password', 401));
   }
   createSendToken(user, 200, res);
 });
