@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './Auth.module.scss';
 import Login from '../../components/form/auth/Login';
 import Signup from '../../components/form/auth/signup';
-import axios from '../../utils/Axios';
 class Auth extends React.Component {
   state = {
     isLogin: true,
@@ -15,6 +14,7 @@ class Auth extends React.Component {
           isEmail: true,
         },
         isValid: false,
+        touched: false,
       },
       password: {
         forLogin: true,
@@ -24,6 +24,7 @@ class Auth extends React.Component {
           minLength: 6,
         },
         isValid: false,
+        touched: false,
       },
     },
   };
@@ -46,21 +47,6 @@ class Auth extends React.Component {
     }
     return true;
   }
-  attemptLogin = async (e) => {
-    e.preventDefault();
-    for (let field in this.state.fields) {
-      if (
-        !this.state.fields[field].isValid &&
-        this.state.fields[field].forLogin
-      )
-        return;
-    }
-    const response = await axios.post('/users/login', {
-      email: this.state.fields.email.value,
-      password: this.state.fields.password.value,
-    });
-    console.log(response);
-  };
   checkValidity(value, rule) {
     let isValid = true;
     if (!rule) {
@@ -93,6 +79,7 @@ class Auth extends React.Component {
             fieldEvent.target.value,
             this.state.fields[fieldEvent.target.name].validation
           ),
+          touched: true,
         },
       },
     });
@@ -101,7 +88,7 @@ class Auth extends React.Component {
     let html;
     if (this.state.isLogin) {
       html = (
-        <Login login={this.attemptLogin} onFieldChange={this.onFieldChange} />
+        <Login onFieldChange={this.onFieldChange} fields={this.state.fields} />
       );
     } else {
       html = <Signup />;

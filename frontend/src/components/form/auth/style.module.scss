@@ -1,3 +1,20 @@
+.error {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1rem 5rem;
+  border-radius: 20px;
+  transform: translate(-50%, -1000%);
+  font-size: 1.6rem;
+  font-weight: 700;
+  border: 1px solid #f5c6cb;
+  transition: transform linear 0.5s;
+  &_show {
+    transform: translate(-50%, 0%);
+  }
+}
 .form {
   background-color: #fff;
   max-width: 55rem;
@@ -36,7 +53,12 @@
     box-sizing: border-box;
     &:focus {
       outline: none;
+    }
+    &:not([data-error='true']):focus {
       border-bottom: 3px solid var(--main-color);
+    }
+    &[data-error='true'] {
+      border-bottom: 3px solid red;
     }
     &:placeholder-shown + label {
       opacity: 0;
