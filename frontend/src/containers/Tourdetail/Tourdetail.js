@@ -43,7 +43,7 @@ class Tourdetail extends React.Component {
   };
   render() {
     let html;
-    if (this.state.loading || true) {
+    if (this.state.loading) {
       html = <Spinner />;
     } else if (this.state.error.status) {
       html = (

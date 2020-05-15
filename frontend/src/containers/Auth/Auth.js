@@ -29,9 +29,13 @@ class Auth extends React.Component {
     },
   };
   componentDidMount() {
+    document.getElementById('root').setAttribute('style', 'height:100vh;');
     if (/signup/.test(this.props.history.location.pathname)) {
       this.setState({ isLogin: false });
     }
+  }
+  componentWillUnmount() {
+    document.getElementById('root').setAttribute('style', '');
   }
   shouldComponentUpdate() {
     if (
