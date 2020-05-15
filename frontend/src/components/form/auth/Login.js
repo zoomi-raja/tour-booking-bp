@@ -1,42 +1,34 @@
 import React, { useState } from 'react';
 import classes from './style.module.scss';
 import Button from '../../UI/Button/Button';
-import axios from '../../../utils/Axios';
 import Aux from '../../../hoc/Aux';
+// redux
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions/auth/actions';
 
-const attemptLogin = (fields, setState) => {
+const attemptLogin = (fields, storeAction) => {
   return async (e) => {
     e.preventDefault();
     for (let field in fields) {
       if (!fields[field].isValid && fields[field].forLogin) return;
     }
-    setState({ disable: true, errorMessage: null });
-    try {
-      const response = await axios.post('/users/login', {
-        email: fields.email.value,
-        password: fields.password.value,
-      });
-      setState({ disable: false, errorMessage: null });
-    } catch (err) {
-      setState({ disable: false, errorMessage: err.response.data.message });
-      setTimeout(() => {
-        setState({ errorMessage: null });
-      }, 2000);
-    }
+    storeAction(fields.email.value, fields.password.value);
+    // setTimeout(() => {
+    //   setState({ errorMessage: null });
+    // }, 2000);
   };
 };
 const Form = (prop) => {
-  const [state, setState] = useState({ disable: false, errorMessage: '' });
   let errorClass = [classes.error];
-  if (state.errorMessage) {
+  if (prop.error) {
     errorClass.push(classes.error_show);
   }
   return (
     <Aux>
-      <div className={errorClass.join(' ')}>{state.errorMessage}</div>
+      <div className={errorClass.join(' ')}>{prop.message}</div>
       <form
         className={classes.form}
-        onSubmit={attemptLogin(prop.fields, setState)}
+        onSubmit={attemptLogin(prop.fields, prop.onAuth)}
       >
         <h1>Sign in form</h1>
         <div className={classes.form__group}>
@@ -83,7 +75,7 @@ const Form = (prop) => {
           <Button
             btnType="btn--primary"
             type="submit"
-            disabled={state.disable ? 'disabled' : ''}
+            disabled={prop.loading ? 'disabled' : ''}
           >
             Sign In
           </Button>
@@ -101,4 +93,14 @@ const Form = (prop) => {
     </Aux>
   );
 };
-export default Form;
+const mapStateToProps = (state) => {
+  return state.auth;
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAuth: (email, password) => {
+      dispatch(actions.auth(email, password));
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
