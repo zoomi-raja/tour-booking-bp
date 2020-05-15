@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/auth/actionTypes';
 
 const initialState = {
   token: null,
-  userID: null,
+  user: null,
   loading: false,
   error: null,
   message: null,
@@ -32,9 +32,10 @@ const auth = (state = initialState, action) => {
     case actionTypes.AUTH_SUCCESS:
       return {
         ...state,
-        loading: false,
+        token: action.token,
+        user: action.user,
         error: null,
-        message: null,
+        loading: false,
       };
     default:
       return state;

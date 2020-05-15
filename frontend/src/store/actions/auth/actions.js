@@ -19,6 +19,13 @@ export const clearError = () => {
     type: actionTypes.CLEAR_ERROR,
   };
 };
+export const authSuccess = (authData) => {
+  return {
+    type: actionTypes.AUTH_SUCCESS,
+    token: authData.token,
+    user: authData.data.user,
+  };
+};
 export const auth = (email, password) => {
   return async (dispatch) => {
     dispatch(authStart());
@@ -27,6 +34,16 @@ export const auth = (email, password) => {
         email: email,
         password: password,
       });
+
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('user', JSON.stringify(response.data.data.user));
+      dispatch(authSuccess(response.data));
+      //   todo timeout functionality
+      //   const exp = new Date(
+      // 	new Date().getTime() + response..data.data.expiresIn * 1000
+      //   );
+      //   localStorage.setItem("expirationDate", exp);
+      //   dispatch(checkAuthTimeout(response.data.expiresIn));
     } catch (err) {
       let msg = err.message;
       if (err && err.response && err.response.data) {

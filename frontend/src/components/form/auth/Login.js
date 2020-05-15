@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import classes from './style.module.scss';
 import Button from '../../UI/Button/Button';
 import Aux from '../../../hoc/Aux';
+import { Redirect } from 'react-router-dom';
 // redux
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/auth/actions';
@@ -13,9 +14,6 @@ const attemptLogin = (fields, storeAction) => {
       if (!fields[field].isValid && fields[field].forLogin) return;
     }
     storeAction(fields.email.value, fields.password.value);
-    // setTimeout(() => {
-    //   setState({ errorMessage: null });
-    // }, 2000);
   };
 };
 const Form = (prop) => {
@@ -23,8 +21,13 @@ const Form = (prop) => {
   if (prop.error) {
     errorClass.push(classes.error_show);
   }
+  let redirect = null;
+  if (prop.isAuthenticated) {
+    redirect = <Redirect to={prop.authRedirectPath} />;
+  }
   return (
     <Aux>
+      {redirect}
       <div className={errorClass.join(' ')}>{prop.message}</div>
       <form
         className={classes.form}
@@ -94,7 +97,11 @@ const Form = (prop) => {
   );
 };
 const mapStateToProps = (state) => {
-  return state.auth;
+  const props = {
+    ...state.auth,
+    isAuthenticated: state.auth.token !== null,
+  };
+  return props;
 };
 const mapDispatchToProps = (dispatch) => {
   return {
