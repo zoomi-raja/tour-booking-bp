@@ -25,7 +25,7 @@ class Tours extends React.Component {
     });
     let html;
     if (this.state.loading) {
-      html = <Spinner style={{ margin: '36vh auto' }} />;
+      html = <Spinner />;
     } else {
       html = (
         <Aux>

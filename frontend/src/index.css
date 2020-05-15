@@ -64,6 +64,6 @@ a {
 #root {
   display: flex;
   flex-flow: column nowrap;
-  min-height: 100vh;
+  height: 100vh;
   justify-content: space-between;
 }
