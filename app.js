@@ -8,7 +8,7 @@ const xss = require('xss-clean');
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
-
+const cors = require('cors');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const hpp = require('hpp');
@@ -36,14 +36,7 @@ app.use(
   })
 );
 // allow cros
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  next();
-});
+app.use(cors());
 // development logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));

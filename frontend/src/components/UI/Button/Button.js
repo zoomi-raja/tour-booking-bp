@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Button.module.css';
+import classes from './Button.module.scss';
 const button = (props) => (
   <button
     disabled={props.disabled}
@@ -9,6 +9,7 @@ const button = (props) => (
       classes[props.btnSize],
       props.classes,
     ].join(' ')}
+    type={props.type}
     onClick={props.clicked}
   >
     {props.children}

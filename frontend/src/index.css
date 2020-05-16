@@ -60,3 +60,10 @@ a {
 .mt-3 {
   margin-top: 3rem;
 }
+
+#root {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100vh;
+  justify-content: space-between;
+}

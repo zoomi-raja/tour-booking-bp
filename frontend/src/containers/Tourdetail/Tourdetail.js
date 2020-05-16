@@ -44,7 +44,7 @@ class Tourdetail extends React.Component {
   render() {
     let html;
     if (this.state.loading) {
-      html = <Spinner style={{ margin: '36vh auto' }} />;
+      html = <Spinner />;
     } else if (this.state.error.status) {
       html = (
         <p style={{ padding: '5rem', fontSize: '1.6rem' }}>

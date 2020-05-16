@@ -15,19 +15,22 @@
   outline: none;
   cursor: pointer;
 }
-.btn:hover {
+.btn:not(:disabled):hover {
   -webkit-transform: translateY(-3px);
   transform: translateY(-3px);
   -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.35);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.35);
 }
 .btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px) !important;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2) !important;
 }
 .btn--small {
   padding: 1.25rem 3rem !important;
   font-size: 1.4rem !important;
+}
+.btn--large {
+  width: 100%;
 }
 .btn--primary {
   background-color: var(--main-color);
@@ -45,4 +48,15 @@
 .btn:disabled {
   color: #ccc;
   cursor: not-allowed;
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(to right, #eff1f3 4%, #e2e2e2 25%, #eff1f3 36%);
+  background-size: 1000px 100%;
+}
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
 }
