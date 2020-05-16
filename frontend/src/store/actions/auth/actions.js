@@ -19,6 +19,13 @@ export const clearError = () => {
     type: actionTypes.CLEAR_ERROR,
   };
 };
+export const logout = () => {
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
+  return {
+    type: actionTypes.AUTH_LOGOUT,
+  };
+};
 export const authSuccess = (authData) => {
   return {
     type: actionTypes.AUTH_SUCCESS,
@@ -53,6 +60,21 @@ export const auth = (email, password) => {
       setTimeout(() => {
         dispatch(clearError());
       }, 2000);
+    }
+  };
+};
+export const authCheckState = () => {
+  return (dispatch) => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      dispatch(logout());
+      return;
+    } else {
+      const user = { user: JSON.parse(localStorage.getItem('user')) };
+      dispatch(authSuccess({ token: token, data: user }));
+      // dispatch(
+      //   checkAuthTimeout((exp.getTime() - new Date().getTime()) / 1000)
+      // );
     }
   };
 };

@@ -37,6 +37,13 @@ const auth = (state = initialState, action) => {
         error: null,
         loading: false,
       };
+    case actionTypes.AUTH_LOGOUT:
+      return {
+        ...state,
+        token: null,
+        user: null,
+        loading: false,
+      };
     default:
       return state;
   }

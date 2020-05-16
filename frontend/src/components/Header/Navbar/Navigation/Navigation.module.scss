@@ -1,26 +1,90 @@
-.nav_list ul {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  li {
-    padding: 0 2rem;
-    span {
-      padding-bottom: 1.5rem;
-      border-bottom: 3px transparent solid;
+.nav_list {
+  position: relative;
+  &:hover .subMenu {
+    display: table;
+  }
+  .menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    li {
+      padding: 0 2rem;
+      span {
+        padding-bottom: 1.5rem;
+        border-bottom: 3px transparent solid;
 
-      &:hover a {
-        border-bottom: 3px var(--main-color) solid;
-        padding-bottom: 0.5rem;
+        &:hover a {
+          border-bottom: 3px var(--main-color) solid;
+          padding-bottom: 0.5rem;
+        }
+      }
+      a {
+        color: #fff;
+        text-transform: uppercase;
+        border-bottom: 3px #ccc solid;
+        padding-bottom: 1.5rem;
+        transition: border-color 0.5s, padding-bottom 0.5s;
+        &.active {
+          border-bottom: 3px var(--main-color) solid;
+        }
       }
     }
-    a {
-      color: #fff;
-      text-transform: uppercase;
-      border-bottom: 3px #ccc solid;
-      padding-bottom: 1.5rem;
-      transition: border-color 0.5s, padding-bottom 0.5s;
-      &.active {
-        border-bottom: 3px var(--main-color) solid;
+  }
+
+  .user {
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 2rem;
+    transition: background ease-in 0.1s;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    cursor: pointer;
+    &__avatar {
+      background-color: #fff;
+      border-radius: 50%;
+      width: 3rem;
+    }
+    &__name {
+      padding: 0rem 1rem;
+      border: none;
+    }
+    &__icon {
+      fill: #fff;
+      width: 2rem;
+      height: 3rem;
+    }
+  }
+  .subMenu {
+    position: absolute;
+    background: #fff;
+    border-radius: 3px;
+    display: table;
+    z-index: 1;
+    width: 100%;
+    color: var(--secondary-color);
+    display: none;
+    list-style: none;
+    a:visited {
+      color: var(--secondary-color);
+    }
+    &__item {
+      padding: 0.5rem;
+      margin: 0 0.5rem;
+      text-transform: capitalize;
+      a {
+        display: block;
+        width: 100%;
+      }
+      cursor: pointer;
+      &:not(:last-child) {
+        border-bottom: 1px dashed var(--gray-color-light3);
+      }
+      &:hover {
+        background-color: var(--gray-color-light2);
+        border-radius: 3px;
       }
     }
   }
