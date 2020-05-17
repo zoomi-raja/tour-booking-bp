@@ -1,0 +1,19 @@
+version: '2'
+services:
+  tour-api:
+    image: tour-backend-api
+    build: .
+    ports:
+      - 80:8000
+    volumes:
+      - ./:/usr/src/app
+      - tour-volume:/usr/src/app/node_modules
+  mongo:
+    image: mongo:3-xenial
+    volumes:
+      - db-volume:/data/db
+    ports:
+      - '27017:27017'
+volumes:
+  tour-volume:
+  db-volume:
