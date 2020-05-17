@@ -27,6 +27,25 @@ class Auth extends React.Component {
         isValid: false,
         touched: false,
       },
+      passwordConfirm: {
+        forLogin: false,
+        value: '',
+        validation: {
+          required: true,
+        },
+        isValid: false,
+        touched: false,
+      },
+      name: {
+        forLogin: false,
+        value: '',
+        validation: {
+          required: true,
+          minLength: 4,
+        },
+        isValid: false,
+        touched: false,
+      },
     },
   };
   componentDidMount() {
@@ -75,7 +94,9 @@ class Auth extends React.Component {
         <Login onFieldChange={this.onFieldChange} fields={this.state.fields} />
       );
     } else {
-      html = <Signup />;
+      html = (
+        <Signup onFieldChange={this.onFieldChange} fields={this.state.fields} />
+      );
     }
     return (
       <div className={classes.remainingHeight}>

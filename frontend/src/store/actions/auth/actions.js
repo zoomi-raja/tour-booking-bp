@@ -33,6 +33,10 @@ export const authSuccess = (authData) => {
     user: authData.data.user,
   };
 };
+export const register = (name, email, password, passwordConfirm) => {
+  console.log(password);
+  return { type: '' };
+};
 export const auth = (email, password) => {
   return async (dispatch) => {
     dispatch(authStart());

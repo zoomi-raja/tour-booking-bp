@@ -1,19 +1,50 @@
 import React from 'react';
 import classes from './style.module.scss';
 import Button from '../../UI/Button/Button';
+import { Redirect } from 'react-router-dom';
+// redux
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions/auth/actions';
+const attemptRegistration = (fields, func) => {
+  return (event) => {
+    event.preventDefault();
+    for (let field in fields) {
+      if (!fields[field].isValid) return;
+    }
+    func(
+      fields.name.value,
+      fields.email.value,
+      fields.password.value,
+      fields.passwordConfirm.value
+    );
+  };
+};
 const Form = (prop) => {
+  let redirect = null;
+  if (prop.isAuthenticated) {
+    redirect = <Redirect to={prop.authRedirectPath} />;
+  }
   return (
-    <form className={classes.form} style={{ margin: '8vh auto' }}>
+    <form
+      className={classes.form}
+      style={{ margin: '8vh auto' }}
+      onSubmit={attemptRegistration(prop.fields, prop.onRegistration)}
+    >
+      {redirect}
       <h1>Sign Up form</h1>
       <div className={classes.form__group}>
         <input
           placeholder="Full Name"
           autoComplete="off"
+          data-error={
+            !prop.fields.name.isValid && prop.fields.name.touched ? 'true' : ''
+          }
           className={classes.form__input}
           type="text"
           required
-          nme="name"
+          name="name"
           id="name"
+          onChange={prop.onFieldChange}
         />
         <label className={classes.form__label} htmlFor="name">
           Full Name
@@ -23,11 +54,17 @@ const Form = (prop) => {
         <input
           placeholder="Email Address"
           autoComplete="off"
+          data-error={
+            !prop.fields.email.isValid && prop.fields.email.touched
+              ? 'true'
+              : ''
+          }
           className={classes.form__input}
           type="email"
           required
-          nme="email"
+          name="email"
           id="email"
+          onChange={prop.onFieldChange}
         />
         <label className={classes.form__label} htmlFor="email">
           Email Address
@@ -37,11 +74,17 @@ const Form = (prop) => {
         <input
           placeholder="Password"
           autoComplete="off"
+          data-error={
+            !prop.fields.password.isValid && prop.fields.password.touched
+              ? 'true'
+              : ''
+          }
           className={classes.form__input}
           type="password"
           required
           name="password"
           id="password"
+          onChange={prop.onFieldChange}
         />
         <label className={classes.form__label} htmlFor="password">
           Password
@@ -51,11 +94,18 @@ const Form = (prop) => {
         <input
           placeholder="Confirm Password"
           autoComplete="off"
+          data-error={
+            !prop.fields.passwordConfirm.isValid &&
+            prop.fields.passwordConfirm.touched
+              ? 'true'
+              : ''
+          }
           className={classes.form__input}
           type="password"
           required
           name="passwordConfirm"
           id="passwordConfirm"
+          onChange={prop.onFieldChange}
         />
         <label
           className={classes.form__label}
@@ -64,10 +114,29 @@ const Form = (prop) => {
           Confirm Password
         </label>
       </div>
-      <Button btnType="btn--primary" btnSize="btn--large">
+      <Button
+        btnType="btn--primary"
+        btnSize="btn--large"
+        type="submit"
+        disabled={prop.loading ? 'disabled' : ''}
+      >
         Register
       </Button>
     </form>
   );
 };
-export default Form;
+const mapStateToProps = (state) => {
+  const props = {
+    ...state.auth,
+    isAuthenticated: !!state.auth.token,
+  };
+  return props;
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onRegistration: (name, email, password, passwordConfirm) => {
+      dispatch(actions.register(name, email, password, passwordConfirm));
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
