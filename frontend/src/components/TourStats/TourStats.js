@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './TourStats.module.scss';
 import svgSprite from '../../assets/icons.svg';
 import tourGuide from './zoomi.jpeg';
 import Button from '../UI/Button/Button';
+import axios from '../../utils/Axios';
+// stripe
+import { loadStripe } from '@stripe/stripe-js';
+const stripePromise = loadStripe('pk_test_hHR7Lrw7Dii4oWxrN8XMjTLL00QcU9lqxb');
+
+const useThisFunction = (obj, toggleLoading) => {
+  return async () => {
+    try {
+      toggleLoading(true);
+      axios.defaults.headers.common[
+        'Authorization'
+      ] = `Bearer ${localStorage.getItem('token')}`;
+      const sessionDetail = await axios.get(
+        `/bookings/checkout-session/${obj.tourID}`
+      );
+      const stripe = await stripePromise;
+      await stripe.redirectToCheckout({
+        sessionId: sessionDetail.data.session.id,
+      });
+    } catch (error) {
+      console.log(error);
+      toggleLoading(false);
+    }
+  };
+};
 const TourStats = (props) => {
+  const [loading, toggleLoading] = useState(false);
   const date = new Date(props.details.startDate[0]).toLocaleDateString(
     'en-us',
     {
@@ -91,11 +117,10 @@ const TourStats = (props) => {
           btnType="btn--primary"
           btnSize="btn--small"
           classes="mt-1"
-          clicked={() => {
-            alert('yet to implement');
-          }}
+          disabled={loading}
+          clicked={useThisFunction({ tourID: props.id }, toggleLoading)}
         >
-          Book now
+          {loading ? 'loading' : 'Book now'}
         </Button>
       </div>
     </div>

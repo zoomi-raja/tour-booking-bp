@@ -103,6 +103,7 @@ class Tourdetail extends React.Component {
               }}
             />
             <TourStats
+              id={this.state.tour.id}
               guides={this.state.tour.guides}
               details={{
                 startDate: this.state.tour.startDates,
