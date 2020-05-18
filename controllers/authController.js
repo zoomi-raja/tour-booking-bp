@@ -4,9 +4,12 @@ const AppError = require('./../utils/appError');
 const sendEmail = require('./../utils/email');
 const { promisify } = require('util');
 const crypto = require('crypto');
-const catchAsync = (fn) => {
+const catchAsync = (fn, statusCode = null) => {
   return (req, res, next) => {
     fn(req, res, next).catch((err) => {
+      if (statusCode) {
+        err.statusCode = statusCode;
+      }
       next(err);
     });
   };
@@ -41,7 +44,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     passwordConfirm: req.body.passwordConfirm,
   });
   createSendToken(newUseer, 200, res);
-});
+}, 422);
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;

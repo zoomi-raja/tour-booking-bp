@@ -30,7 +30,7 @@ const navigation = (props) => {
     html = (
       <Aux>
         <div className={classes.user}>
-          <img className={classes.user__avatar} src={placeHolder} />
+          <img className={classes.user__avatar} src={placeHolder} alt="owner" />
           <span className={classes.user__name}>{props.user.name}</span>
           <svg className={classes.user__icon}>
             <use xlinkHref={`${svgSprite}#icon-chevron-small-down`}></use>

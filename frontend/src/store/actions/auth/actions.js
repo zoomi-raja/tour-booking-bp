@@ -34,8 +34,29 @@ export const authSuccess = (authData) => {
   };
 };
 export const register = (name, email, password, passwordConfirm) => {
-  console.log(password);
-  return { type: '' };
+  return async (dispatch) => {
+    dispatch(authStart());
+    try {
+      const response = await axios.post('/users/signup', {
+        name,
+        email,
+        password,
+        passwordConfirm,
+      });
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('user', JSON.stringify(response.data.data.user));
+      dispatch(authSuccess(response.data));
+    } catch (error) {
+      let msg = error.message;
+      if (error && error.response && error.response.data) {
+        msg = error.response.data.message;
+      }
+      dispatch(authFail(msg));
+      setTimeout(() => {
+        dispatch(clearError());
+      }, 2000);
+    }
+  };
 };
 export const auth = (email, password) => {
   return async (dispatch) => {
