@@ -80,7 +80,7 @@ const Form = (prop) => {
             type="submit"
             disabled={prop.loading ? 'disabled' : ''}
           >
-            Sign In
+            {prop.loading ? 'Loading...' : 'Sign In'}
           </Button>
           <div className={classes.form__radioInput}>
             <input name="keeplog" id="keeplog" type="checkbox" />

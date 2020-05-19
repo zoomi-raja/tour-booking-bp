@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './TourStats.module.scss';
 import svgSprite from '../../assets/icons.svg';
 import tourGuide from './zoomi.jpeg';
@@ -6,21 +6,13 @@ import Button from '../UI/Button/Button';
 import axios from '../../utils/Axios';
 // stripe
 import { loadStripe } from '@stripe/stripe-js';
-const stripePromise = loadStripe('pk_test_hHR7Lrw7Dii4oWxrN8XMjTLL00QcU9lqxb');
 
-const useThisFunction = (obj, toggleLoading) => {
+const useThisFunction = (stripeData, toggleLoading) => {
   return async () => {
     try {
       toggleLoading(true);
-      axios.defaults.headers.common[
-        'Authorization'
-      ] = `Bearer ${localStorage.getItem('token')}`;
-      const sessionDetail = await axios.get(
-        `/bookings/checkout-session/${obj.tourID}`
-      );
-      const stripe = await stripePromise;
-      await stripe.redirectToCheckout({
-        sessionId: sessionDetail.data.session.id,
+      await stripeData.stripe.redirectToCheckout({
+        sessionId: stripeData.sessionDetail.data.session.id,
       });
     } catch (error) {
       console.log(error);
@@ -38,6 +30,32 @@ const TourStats = (props) => {
       day: '2-digit',
     }
   );
+  const [stripeState, setStripeState] = useState({
+    sessionDetail: {},
+    stripe: {},
+  });
+  useEffect(() => {
+    const stripePromise = loadStripe(
+      'pk_test_hHR7Lrw7Dii4oWxrN8XMjTLL00QcU9lqxb'
+    );
+    async function setStripe() {
+      let stripe,
+        sessionDetail = {};
+      axios.defaults.headers.common[
+        'Authorization'
+      ] = `Bearer ${localStorage.getItem('token')}`;
+      sessionDetail = await axios.get(`/bookings/checkout-session/${props.id}`);
+      stripe = await stripePromise;
+      setStripeState({ sessionDetail, stripe });
+    }
+    setStripe();
+    return () => {
+      setStripeState({
+        sessionDetail: {},
+        stripe: {},
+      });
+    };
+  }, [props.id]);
   return (
     <div className={classes['key-details']}>
       <div className={classes.guides__section}>
@@ -118,7 +136,7 @@ const TourStats = (props) => {
           btnSize="btn--small"
           classes="mt-1"
           disabled={loading}
-          clicked={useThisFunction({ tourID: props.id }, toggleLoading)}
+          clicked={useThisFunction(stripeState, toggleLoading)}
         >
           {loading ? 'loading' : 'Book now'}
         </Button>
