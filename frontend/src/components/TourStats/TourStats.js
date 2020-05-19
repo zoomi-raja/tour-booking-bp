@@ -21,7 +21,7 @@ const useThisFunction = (stripeData, toggleLoading) => {
   };
 };
 const TourStats = (props) => {
-  const [loading, toggleLoading] = useState(false);
+  const [loading, toggleLoading] = useState(true);
   const date = new Date(props.details.startDate[0]).toLocaleDateString(
     'en-us',
     {
@@ -47,6 +47,7 @@ const TourStats = (props) => {
       sessionDetail = await axios.get(`/bookings/checkout-session/${props.id}`);
       stripe = await stripePromise;
       setStripeState({ sessionDetail, stripe });
+      toggleLoading(false);
     }
     setStripe();
     return () => {

@@ -40,7 +40,7 @@ const navigation = (props) => {
           <li className={classes.subMenu__item}>
             <Link to="/logout">logout</Link>
           </li>
-          <li className={classes.subMenu__item}>sample item</li>
+          <li className={classes.subMenu__item}>My Tours</li>
         </ul>
       </Aux>
     );
