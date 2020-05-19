@@ -9,4 +9,9 @@ router.get(
   authController.protect,
   bookingController.getStripeSession
 );
+router.post(
+  '/success/:sessionID',
+  authController.protect,
+  bookingController.createOrder
+);
 module.exports = router;

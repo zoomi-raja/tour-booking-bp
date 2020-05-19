@@ -3,6 +3,7 @@ import Layout from '../../hoc/Layout/Layout';
 import Tours from '../../containers/Tours/Tours';
 import Auth from '../../containers/Auth/Auth';
 import Logout from '../../containers/Auth/Logout/Logout';
+import Payment from '../Payment/Payment';
 import NotFound from '../Notfound/Notfound';
 import { Switch, Route } from 'react-router-dom';
 import Spinner from '../UI/Spinner/Spinner';
@@ -25,6 +26,7 @@ class Home extends React.Component {
             <Route path="/tour/:id" component={Tourdetail} />
             <Route path="/auth" component={Auth} />
             <Route path="/logout" exact component={Logout} />
+            <Route path="/payment/:sessionID" component={Payment} />
             <Route path="/" exact component={Tours} />
             <Route path="*" component={NotFound} />
           </Switch>
