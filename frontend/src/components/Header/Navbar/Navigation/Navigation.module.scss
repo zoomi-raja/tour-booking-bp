@@ -1,7 +1,7 @@
 .nav_list {
   position: relative;
   &:hover .subMenu {
-    display: table;
+    display: block;
   }
   .menu {
     list-style: none;
@@ -61,18 +61,18 @@
     position: absolute;
     background: #fff;
     border-radius: 3px;
-    display: table;
     z-index: 1;
     width: 100%;
     color: var(--secondary-color);
     display: none;
     list-style: none;
+    a,
     a:visited {
       color: var(--secondary-color);
     }
     &__item {
       padding: 0.5rem;
-      margin: 0 0.5rem;
+      margin: 0.5rem;
       text-transform: capitalize;
       a {
         display: block;
@@ -83,7 +83,7 @@
         border-bottom: 1px dashed var(--gray-color-light3);
       }
       &:hover {
-        background-color: var(--gray-color-light2);
+        background-color: rgba(255, 188, 0, 0.8);
         border-radius: 3px;
       }
     }

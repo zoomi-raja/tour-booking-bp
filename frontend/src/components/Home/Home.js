@@ -4,6 +4,7 @@ import Tours from '../../containers/Tours/Tours';
 import Auth from '../../containers/Auth/Auth';
 import Logout from '../../containers/Auth/Logout/Logout';
 import Payment from '../Payment/Payment';
+import User from '../../containers/User/User';
 import NotFound from '../Notfound/Notfound';
 import { Switch, Route } from 'react-router-dom';
 import Spinner from '../UI/Spinner/Spinner';
@@ -27,6 +28,7 @@ class Home extends React.Component {
             <Route path="/auth" component={Auth} />
             <Route path="/logout" exact component={Logout} />
             <Route path="/payment/:sessionID" component={Payment} />
+            <Route path="/user" component={User} />
             <Route path="/" exact component={Tours} />
             <Route path="*" component={NotFound} />
           </Switch>

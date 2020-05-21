@@ -38,9 +38,14 @@ const navigation = (props) => {
         </div>
         <ul className={classes.subMenu}>
           <li className={classes.subMenu__item}>
+            <Link to="/user/account">my account</Link>
+          </li>
+          <li className={classes.subMenu__item}>
+            <Link to="/user/tours">my tours</Link>
+          </li>
+          <li className={classes.subMenu__item}>
             <Link to="/logout">logout</Link>
           </li>
-          <li className={classes.subMenu__item}>My Tours</li>
         </ul>
       </Aux>
     );

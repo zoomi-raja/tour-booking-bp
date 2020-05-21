@@ -11,11 +11,12 @@ const Payment = (props) => {
         `/bookings/success/${props.match.params.sessionID}`
       );
       toggleLoading(false);
+      console.log(booking);
       setTimeout(() => {
         props.history.push('/');
       }, 1000);
     })();
-  }, []);
+  }, [props.match.params.sessionID, props.history]);
   const [loading, toggleLoading] = useState(true);
   let html = <Spinner />;
   if (!loading) {
