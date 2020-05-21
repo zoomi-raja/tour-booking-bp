@@ -20,7 +20,7 @@ const TourCard = (props) => {
           </span>
           )<span className={classes.status + ' ' + payClass}>Paid</span>
         </div>
-        <p className={classes.summary}>{data.tour.title}</p>
+        <p className={classes.summary}>{data.tour.summary}</p>
         <div className={classes.stats}>
           <div className={classes.stats__item}>
             <span className={classes.stats__key}>Price :</span>
