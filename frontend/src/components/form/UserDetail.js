@@ -16,7 +16,7 @@ const UserDetail = (props) => {
           data-error=""
           className={classes.form__input}
           type="email"
-          required
+          disabled
           name="email"
           id="email"
           onChange={props.onFieldChange}
