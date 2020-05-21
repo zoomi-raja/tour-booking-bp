@@ -3,15 +3,8 @@ const authController = require('../controllers/authController');
 const bookingController = require('../controllers/bookingController');
 
 const router = express.Router();
-
-router.get(
-  '/checkout-session/:tourID',
-  authController.protect,
-  bookingController.getStripeSession
-);
-router.post(
-  '/success/:sessionID',
-  authController.protect,
-  bookingController.createOrder
-);
+router.use(authController.protect);
+router.get('/checkout-session/:tourID', bookingController.getStripeSession);
+router.post('/success/:sessionID', bookingController.createOrder);
+router.get('/', bookingController.getAll);
 module.exports = router;

@@ -4,6 +4,7 @@ const token = 'sk_test_vVnvR0IuUzCgifrC8eew8HIo008Etq1Mkz';
 const stripe = require('stripe')(token);
 const catchAsync = require('../utils/catchAsync');
 const axios = require('axios');
+const factory = require('./handlerFactory');
 
 exports.getStripeSession = catchAsync(async (req, res, next) => {
   const tour = await Tour.findById(req.params.tourID);
@@ -45,4 +46,8 @@ exports.createOrder = catchAsync(async (req, res, next) => {
     paidDate: Date.now(),
   });
   res.status(200).json({ status: 'success', data: booking });
+});
+
+exports.getAll = factory.getAll(Booking, (req, res) => {
+  req.query.user = req.user.id;
 });

@@ -25,7 +25,7 @@ const bookingSchema = mongoose.Schema({
   paidDate: Date,
 });
 bookingSchema.pre(/^find/, function (next) {
-  this.populate('user').populate({ path: 'tour', select: 'name' });
+  this.populate({ path: 'tour', select: '-name' }); //.populate('user')
   next();
 });
 const Booking = mongoose.model('Booking', bookingSchema);
