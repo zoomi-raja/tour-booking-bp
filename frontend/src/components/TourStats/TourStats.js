@@ -41,9 +41,6 @@ const TourStats = (props) => {
     async function setStripe() {
       let stripe,
         sessionDetail = {};
-      axios.defaults.headers.common[
-        'Authorization'
-      ] = `Bearer ${localStorage.getItem('token')}`;
       sessionDetail = await axios.get(`/bookings/checkout-session/${props.id}`);
       stripe = await stripePromise;
       setStripeState({ sessionDetail, stripe });

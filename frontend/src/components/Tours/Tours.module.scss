@@ -1,0 +1,14 @@
+.sectionHolder {
+  &__title {
+    letter-spacing: 0.1rem;
+    font-size: 3.2rem;
+  }
+  &__data {
+    height: 95%;
+    overflow-y: scroll;
+
+    .userTours {
+      padding: 2rem 2rem 2rem 1rem;
+    }
+  }
+}

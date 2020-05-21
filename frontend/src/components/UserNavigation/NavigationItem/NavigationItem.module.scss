@@ -1,0 +1,24 @@
+.navigation {
+  &__item {
+    margin: 0 1rem;
+    cursor: pointer;
+    &:hover a {
+      border-bottom: 3px solid var(--gray-color-light3);
+    }
+    a,
+    a:visited {
+      color: #fff;
+    }
+    a {
+      display: inline-block;
+      width: 100%;
+      padding: 1rem 4rem;
+      transition: all 0.2s;
+      border-bottom: 3px solid transparent;
+      text-transform: capitalize;
+    }
+    .active {
+      border-bottom: 3px solid var(--main-color) !important;
+    }
+  }
+}
