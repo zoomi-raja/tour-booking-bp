@@ -3,7 +3,7 @@ import classes from './Navigation.module.scss';
 import { NavLink, Link } from 'react-router-dom';
 import svgSprite from '../../../../assets/icons.svg';
 import placeHolder from '../../../../assets/users/no_avatar.png';
-
+import config from '../../../../config';
 import Aux from '../../../../hoc/Aux';
 // redux
 import { connect } from 'react-redux';
@@ -36,7 +36,7 @@ const navigation = (props) => {
         <div className={classes.user}>
           <img
             className={classes.user__avatar}
-            src={`http://localhost/img/users/${props.user.photo}`}
+            src={`${config.IMAGES_PATH}/users/${props.user.photo}`}
             onError={addDefaultSrc}
             alt="owner"
           />

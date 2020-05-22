@@ -4,6 +4,7 @@ import classes from './UploadPhoto.module.scss';
 import axios from '../../utils/Axios';
 import placeHolder from '../../assets/users/no_avatar.png';
 import * as authActions from '../../store/actions/auth/actions';
+import config from '../../config';
 
 const fileChangedHandler = async (event, updatePhoto) => {
   const formData = new FormData();
@@ -22,7 +23,7 @@ const UploadPhoto = (props) => {
       <label htmlFor="uploadPhoto">
         <figure className={classes.userSetting__avatar}>
           <img
-            src={`http://localhost/img/users/${props.user.photo}`}
+            src={`${config.IMAGES_PATH}/users/${props.user.photo}`}
             alt="User"
             onError={addDefaultSrc}
           />

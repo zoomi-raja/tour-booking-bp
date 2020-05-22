@@ -1,6 +1,8 @@
 import axios from 'axios';
+import config from '../config';
+
 const instance = axios.create({
-  baseURL: 'http://127.0.0.1/api/v1',
+  baseURL: config.API_URL,
   headers: { 'Content-Type': 'application/json' },
 });
 if (localStorage.getItem('token')) {
