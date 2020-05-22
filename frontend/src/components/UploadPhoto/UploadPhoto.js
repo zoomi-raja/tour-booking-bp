@@ -47,7 +47,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updatePhoto: (photo) => {
-      dispatch(authActions.updateAvatar(photo));
+      dispatch(authActions.updateUser({ photo: photo }));
     },
   };
 };

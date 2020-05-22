@@ -44,10 +44,10 @@ const auth = (state = initialState, action) => {
         user: null,
         loading: false,
       };
-    case actionTypes.UPDATE_AVATAR:
+    case actionTypes.UPDATE_USER:
       return {
         ...state,
-        user: { ...state.user, photo: action.photo },
+        user: action.user,
       };
     default:
       return state;
