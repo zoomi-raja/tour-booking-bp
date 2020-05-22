@@ -9,37 +9,6 @@
     overflow-y: scroll;
   }
 }
-.userSetting {
-  text-align: center;
-  &__avatar {
-    display: inline-block;
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%);
-    width: 10rem;
-    height: 10rem;
-    cursor: pointer;
-    img {
-      transform: scale(1.2);
-      transition: all 0.2s;
-    }
-    &:hover img {
-      transform: scale(1);
-      filter: blur(3px) brightness(80%);
-    }
-    &__caption {
-      color: #fff;
-      font-size: 1.6rem;
-      transition: all 0.3s ease-out;
-      opacity: 0;
-      transform: translateY(-100%);
-    }
-    &:hover &__caption {
-      opacity: 1;
-      transform: translateY(-290%);
-      display: block;
-    }
-  }
-}
 .borderBottom {
   border-bottom: 1px dashed var(--gray-color-dark);
 }

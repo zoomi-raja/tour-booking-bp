@@ -44,6 +44,11 @@ const auth = (state = initialState, action) => {
         user: null,
         loading: false,
       };
+    case actionTypes.UPDATE_AVATAR:
+      return {
+        ...state,
+        user: { ...state.user, photo: action.photo },
+      };
     default:
       return state;
   }

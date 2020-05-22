@@ -13,6 +13,15 @@ export const authFail = (msg) => {
     message: msg,
   };
 };
+export const updateAvatar = (photo) => {
+  let user = JSON.parse(localStorage.getItem('user'));
+  user.photo = photo;
+  localStorage.setItem('user', JSON.stringify(user));
+  return {
+    type: actionTypes.UPDATE_AVATAR,
+    photo: photo,
+  };
+};
 
 export const clearError = () => {
   return {

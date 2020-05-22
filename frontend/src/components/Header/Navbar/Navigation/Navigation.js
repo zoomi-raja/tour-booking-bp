@@ -2,11 +2,15 @@ import React from 'react';
 import classes from './Navigation.module.scss';
 import { NavLink, Link } from 'react-router-dom';
 import svgSprite from '../../../../assets/icons.svg';
-import placeHolder from '../../../../assets/no_avatar.png';
+import placeHolder from '../../../../assets/users/no_avatar.png';
 
 import Aux from '../../../../hoc/Aux';
 // redux
 import { connect } from 'react-redux';
+
+const addDefaultSrc = (event) => {
+  event.target.src = placeHolder;
+};
 const navigation = (props) => {
   let html = (
     <ul className={classes.menu}>
@@ -30,7 +34,12 @@ const navigation = (props) => {
     html = (
       <Aux>
         <div className={classes.user}>
-          <img className={classes.user__avatar} src={placeHolder} alt="owner" />
+          <img
+            className={classes.user__avatar}
+            src={`http://localhost/img/users/${props.user.photo}`}
+            onError={addDefaultSrc}
+            alt="owner"
+          />
           <span className={classes.user__name}>{props.user.name}</span>
           <svg className={classes.user__icon}>
             <use xlinkHref={`${svgSprite}#icon-chevron-small-down`}></use>

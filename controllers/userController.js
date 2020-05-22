@@ -3,6 +3,7 @@ const sharp = require('sharp');
 const AppError = require('./../utils/appError');
 const User = require('./../models/userModel');
 const factory = require('./handlerFactory');
+const fs = require('fs');
 // multer settings
 // const multerStorage = multer.diskStorage({
 //   destination: (req, file, cb) => {
@@ -71,6 +72,20 @@ exports.deleteUser = (req, res) => {
 exports.uploadPhoto = upload.single('photo');
 exports.resizePhoto = (req, res, next) => {
   if (!req.file) return next();
+  fs.readdir(`public/img/users/`, (err, files) => {
+    if (err) console.log(err);
+    else {
+      let regex = new RegExp(`user-${req.user.id}`);
+      files.forEach((file) => {
+        if (regex.test(file)) {
+          fs.unlink(`public/img/users/${file}`, function (err) {
+            if (err) throw err;
+            console.log('File deleted!');
+          });
+        }
+      });
+    }
+  });
   req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
   sharp(req.file.buffer)
     .resize(500, 500, {

@@ -65,6 +65,9 @@
       visibility: hidden;
       transform: translateY(-4rem);
     }
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 
   &__label {
