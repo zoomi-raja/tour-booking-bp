@@ -7,9 +7,8 @@
   &__data {
     height: 95%;
     overflow-y: scroll;
-
-    .userTours {
-      padding: 2rem 2rem 2rem 1rem;
-    }
   }
+}
+.borderBottom {
+  border-bottom: 1px dashed var(--gray-color-dark);
 }

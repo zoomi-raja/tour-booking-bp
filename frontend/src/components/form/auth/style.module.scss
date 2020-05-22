@@ -65,6 +65,9 @@
       visibility: hidden;
       transform: translateY(-4rem);
     }
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 
   &__label {
@@ -146,4 +149,7 @@
       border: 2px solid var(--main-color) !important;
     }
   }
+}
+.slideRight {
+  text-align: right;
 }

@@ -44,6 +44,11 @@ const auth = (state = initialState, action) => {
         user: null,
         loading: false,
       };
+    case actionTypes.UPDATE_USER:
+      return {
+        ...state,
+        user: action.user,
+      };
     default:
       return state;
   }

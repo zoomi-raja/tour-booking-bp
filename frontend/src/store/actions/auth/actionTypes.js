@@ -3,4 +3,5 @@ export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAIL = 'AUTH_FAIL';
 export const CLEAR_ERROR = 'CLEAR_ERROR';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
+export const UPDATE_USER = 'UPDATE_USER';
 export const SET_AUTH_REDIRECT = 'SET_AUTH_REDIRECT';
