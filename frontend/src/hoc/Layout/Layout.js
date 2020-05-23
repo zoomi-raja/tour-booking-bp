@@ -6,7 +6,6 @@ const layout = (props) => {
   return (
     <Aux>
       <Header />
-      {/* <div>drawer for mobile</div> */}
       {props.children}
       <Footer />
     </Aux>

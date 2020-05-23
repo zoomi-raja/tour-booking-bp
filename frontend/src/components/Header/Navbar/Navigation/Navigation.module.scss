@@ -1,4 +1,8 @@
+@import '../../../../utility';
 .nav_list {
+  @include respond(phone) {
+    display: none;
+  }
   position: relative;
   &:hover .subMenu {
     display: block;

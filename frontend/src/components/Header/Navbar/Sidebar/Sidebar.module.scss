@@ -1,0 +1,7 @@
+@import '../../../../utility';
+.sidebar {
+  display: none;
+  @include respond(phone) {
+    display: block;
+  }
+}

@@ -1,3 +1,9 @@
+@import '../../utility';
+
 .logo {
   background-color: transparent;
+
+  @include respond(tab-port) {
+    width: 20rem;
+  }
 }
