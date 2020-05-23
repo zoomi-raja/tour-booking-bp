@@ -3,29 +3,32 @@
   &__input {
     display: none;
     &:checked {
-      & + .toggler__icon {
+      & + label .toggler__icon {
         background-color: transparent;
-        transform: translate(202px, -10px);
+        transform: translate(0px, 0px);
       }
-      & + .toggler__icon::before {
+      & + label .toggler__icon::before {
         top: 0;
         transform: rotate(135deg);
-        background-color: var(--secondary-color);
       }
-      & + .toggler__icon::after {
+      & + label .toggler__icon::after {
         top: 0;
         transform: rotate(-135deg);
-        background-color: var(--secondary-color);
       }
     }
+  }
+  label {
+    padding: 1rem;
+    z-index: 8;
+    cursor: pointer;
   }
   &__icon,
   &__icon::before,
   &__icon::after {
     background-color: #fff;
     display: inline-block;
-    height: 0.2em;
-    width: 3em;
+    height: 0.1em;
+    width: 2.5em;
   }
   &__icon {
     z-index: 8;
@@ -35,13 +38,13 @@
       content: '';
       transition: all 0.2s;
       position: absolute;
-      top: -8px;
+      top: -6px;
     }
     &::after {
       content: '';
       transition: all 0.2s;
       position: absolute;
-      top: 8px;
+      top: 6px;
     }
   }
 }
