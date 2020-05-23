@@ -7,4 +7,7 @@
   @include respond(tab-port) {
     grid-template-columns: repeat(2, 1fr);
   }
+  @include respond(sphone) {
+    display: block;
+  }
 }

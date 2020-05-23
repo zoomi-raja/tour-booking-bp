@@ -36,6 +36,10 @@
         width: 25rem;
         height: 25rem;
       }
+      @include respond(sphone) {
+        width: 15rem;
+        height: 15rem;
+      }
       &:hover .guides__caption {
         opacity: 1;
         transform: translate(-50%, -50%);

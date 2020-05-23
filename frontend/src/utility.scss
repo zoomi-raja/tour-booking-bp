@@ -4,6 +4,12 @@
 // tab-land
 // big-desktop
 @mixin respond($breakpoint) {
+  @if $breakpoint == sphone {
+    @media (max-width: 23.75em) {
+      //600
+      @content;
+    }
+  }
   @if $breakpoint == phone {
     @media (max-width: 37.5em) {
       //600

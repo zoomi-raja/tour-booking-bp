@@ -1,3 +1,4 @@
+@import '../../utility.scss';
 .sectionHolder {
   &__title {
     text-transform: capitalize;
@@ -10,6 +11,9 @@
 
     .userTours {
       padding: 2rem 2rem 2rem 1rem;
+      @include respond(phone) {
+        padding: 0;
+      }
     }
   }
 }

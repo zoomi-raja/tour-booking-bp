@@ -1,9 +1,17 @@
+@import '../../utility.scss';
 .container {
   display: flex;
   height: 70vh;
   font-size: 1.6rem;
+  @include respond(phone) {
+    display: block;
+    height: auto;
+  }
   .sectionHolder {
     flex-basis: 80%;
     padding: 0 2rem 2rem;
+    @include respond(phone) {
+      padding: 0;
+    }
   }
 }

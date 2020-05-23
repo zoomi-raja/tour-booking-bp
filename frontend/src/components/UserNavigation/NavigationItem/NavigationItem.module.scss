@@ -1,3 +1,4 @@
+@import '../../../utility.scss';
 .navigation {
   &__item {
     margin: 0 1rem;
@@ -16,6 +17,9 @@
       transition: all 0.2s;
       border-bottom: 3px solid transparent;
       text-transform: capitalize;
+      @include respond(phone) {
+        padding: 1rem 2rem;
+      }
     }
     .active {
       border-bottom: 3px solid var(--main-color) !important;
