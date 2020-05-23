@@ -1,0 +1,40 @@
+@import '../../../../../utility';
+.user {
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  transition: background ease-in 0.1s;
+  @include respond(phone) {
+    justify-content: space-between;
+    font-size: 2.4rem;
+    padding: 1.5rem;
+  }
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  cursor: pointer;
+  &__avatar {
+    background-color: #fff;
+    border-radius: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    @include respond(phone) {
+      width: 6rem;
+      height: 6rem;
+    }
+  }
+  &__name {
+    padding: 0rem 1rem;
+    border: none;
+  }
+  &__icon {
+    fill: #fff;
+    width: 2rem;
+    height: 3rem;
+    @include respond(phone) {
+      display: none;
+    }
+  }
+}

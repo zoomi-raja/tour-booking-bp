@@ -1,0 +1,47 @@
+.toggler {
+  line-height: 0;
+  &__input {
+    display: none;
+    &:checked {
+      & + .toggler__icon {
+        background-color: transparent;
+        transform: translate(202px, -10px);
+      }
+      & + .toggler__icon::before {
+        top: 0;
+        transform: rotate(135deg);
+        background-color: var(--secondary-color);
+      }
+      & + .toggler__icon::after {
+        top: 0;
+        transform: rotate(-135deg);
+        background-color: var(--secondary-color);
+      }
+    }
+  }
+  &__icon,
+  &__icon::before,
+  &__icon::after {
+    background-color: #fff;
+    display: inline-block;
+    height: 0.2em;
+    width: 3em;
+  }
+  &__icon {
+    z-index: 8;
+    transition: all 0.7s;
+    position: relative;
+    &::before {
+      content: '';
+      transition: all 0.2s;
+      position: absolute;
+      top: -8px;
+    }
+    &::after {
+      content: '';
+      transition: all 0.2s;
+      position: absolute;
+      top: 8px;
+    }
+  }
+}

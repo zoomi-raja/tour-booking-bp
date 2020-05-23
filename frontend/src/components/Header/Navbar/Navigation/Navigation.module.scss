@@ -35,33 +35,6 @@
     }
   }
 
-  .user {
-    background-color: rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    padding: 0.5rem;
-    border-radius: 2rem;
-    transition: background ease-in 0.1s;
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-    cursor: pointer;
-    &__avatar {
-      background-color: #fff;
-      border-radius: 50%;
-      width: 3.5rem;
-      height: 3.5rem;
-    }
-    &__name {
-      padding: 0rem 1rem;
-      border: none;
-    }
-    &__icon {
-      fill: #fff;
-      width: 2rem;
-      height: 3rem;
-    }
-  }
   .subMenu {
     position: absolute;
     background: #fff;
@@ -74,23 +47,6 @@
     a,
     a:visited {
       color: var(--secondary-color);
-    }
-    &__item {
-      padding: 0.5rem;
-      margin: 0.5rem;
-      text-transform: capitalize;
-      a {
-        display: block;
-        width: 100%;
-      }
-      cursor: pointer;
-      &:not(:last-child) {
-        border-bottom: 1px dashed var(--gray-color-light3);
-      }
-      &:hover {
-        background-color: rgba(255, 188, 0, 0.8);
-        border-radius: 3px;
-      }
     }
   }
 }
