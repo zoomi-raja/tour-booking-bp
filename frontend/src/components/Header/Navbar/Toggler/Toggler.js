@@ -11,7 +11,9 @@ const toggler = (props) => {
         onChange={props.toggleDrawer}
         checked={props.value}
       />
-      <label className={classes.toggler__icon} htmlFor="toggle-menu"></label>
+      <label htmlFor="toggle-menu">
+        <div className={classes.toggler__icon}></div>
+      </label>
     </div>
   );
 };
