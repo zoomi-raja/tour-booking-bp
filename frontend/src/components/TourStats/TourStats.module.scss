@@ -1,3 +1,4 @@
+@import '../../utility.scss';
 .key-details {
   color: var(--secondary-color);
   display: flex;
@@ -5,6 +6,9 @@
   align-items: center;
   text-align: center;
   margin-bottom: 2rem;
+  @include respond(phone) {
+    display: block;
+  }
   & > div {
     background-color: #fff;
   }
@@ -28,6 +32,14 @@
       position: relative;
       -webkit-clip-path: circle(50% at 50% 50%);
       clip-path: circle(50% at 50% 50%);
+      @include respond(phone) {
+        width: 25rem;
+        height: 25rem;
+      }
+      @include respond(sphone) {
+        width: 15rem;
+        height: 15rem;
+      }
       &:hover .guides__caption {
         opacity: 1;
         transform: translate(-50%, -50%);
@@ -35,6 +47,10 @@
       img {
         transform: scale(1.2);
         transition: all 0.2s;
+        @include respond(phone) {
+          transform: scale(1.1);
+          filter: blur(1px) brightness(80%);
+        }
       }
       &:hover img {
         transform: scale(1);
@@ -53,6 +69,10 @@
       opacity: 0;
       transition: all 0.5s;
       backface-visibility: hidden;
+      @include respond(phone) {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
       span {
         font-size: 0.9rem;
         display: block;

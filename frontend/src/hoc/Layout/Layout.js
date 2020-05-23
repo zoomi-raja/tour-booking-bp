@@ -5,9 +5,10 @@ import Footer from '../../components/Footer/Footer';
 const layout = (props) => {
   return (
     <Aux>
-      <Header />
-      {/* <div>drawer for mobile</div> */}
-      {props.children}
+      <div>
+        <Header />
+        {props.children}
+      </div>
       <Footer />
     </Aux>
   );

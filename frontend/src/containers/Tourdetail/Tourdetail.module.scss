@@ -1,7 +1,11 @@
+@import '../../utility.scss';
 .detail_cover {
   height: 30vh;
   img {
     object-fit: cover;
+  }
+  @include respond(phone) {
+    display: none;
   }
 }
 
@@ -11,6 +15,10 @@
   max-width: 90rem;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  @include respond(phone) {
+    margin-top: 0;
+    max-width: none;
+  }
 }
 .detail-heading {
   color: var(--secondary-color);

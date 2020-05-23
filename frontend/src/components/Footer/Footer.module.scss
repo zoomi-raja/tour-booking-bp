@@ -1,13 +1,23 @@
+@import '../../utility';
 #main_footer {
   background-color: var(--secondary-color);
   color: var(--gray-color-light1);
+  @include respond(phone) {
+    text-align: center;
+  }
   p {
     font-size: 1.4rem;
+    @include respond(phone) {
+      font-size: 2.4rem;
+    }
   }
   .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @include respond(phone) {
+      display: block;
+    }
   }
   .social {
     &__icon {
@@ -18,6 +28,11 @@
       border: 2px var(--gray-color-light1) solid;
       padding: 0.9rem;
       fill: var(--gray-color-light1);
+      @include respond(phone) {
+        margin-top: 1rem;
+        width: 6rem;
+        height: 6rem;
+      }
       &:hover {
         background-color: var(--main-color);
       }

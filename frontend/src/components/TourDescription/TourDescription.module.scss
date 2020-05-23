@@ -1,3 +1,5 @@
+@import '../../utility.scss';
+
 .description {
   display: flex;
   justify-content: space-between;
@@ -5,6 +7,9 @@
   text-align: center;
   font-size: 1.6rem;
   min-height: 22.8rem;
+  @include respond(phone) {
+    display: block;
+  }
   img {
     width: initial;
     height: initial;
@@ -21,6 +26,11 @@
       position: absolute;
       box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
       transition: all 0.2s;
+      @include respond(phone) {
+        position: static;
+        width: 32%;
+        box-shadow: none;
+      }
       &:nth-child(1) {
         left: 0;
         top: -10rem;

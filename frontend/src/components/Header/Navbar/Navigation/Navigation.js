@@ -1,16 +1,16 @@
 import React from 'react';
 import classes from './Navigation.module.scss';
-import { NavLink, Link } from 'react-router-dom';
-import svgSprite from '../../../../assets/icons.svg';
-import placeHolder from '../../../../assets/users/no_avatar.png';
-import config from '../../../../config';
+import { NavLink } from 'react-router-dom';
+import NavUserItem from './NavUserItem/NavUserItem';
+import NavItem from './NavItem/NavItem';
 import Aux from '../../../../hoc/Aux';
 // redux
 import { connect } from 'react-redux';
-
-const addDefaultSrc = (event) => {
-  event.target.src = placeHolder;
-};
+const authLinks = [
+  { to: '/user/account', text: 'my account' },
+  { to: '/user/tours', text: 'my tours' },
+  { to: '/logout', text: 'logout' },
+];
 const navigation = (props) => {
   let html = (
     <ul className={classes.menu}>
@@ -31,31 +31,13 @@ const navigation = (props) => {
     </ul>
   );
   if (props.isAuthenticated) {
+    const navItems = authLinks.map((item, index) => {
+      return <NavItem key={index} {...item} />;
+    });
     html = (
       <Aux>
-        <div className={classes.user}>
-          <img
-            className={classes.user__avatar}
-            src={`${config.IMAGES_PATH}/users/${props.user.photo}`}
-            onError={addDefaultSrc}
-            alt="owner"
-          />
-          <span className={classes.user__name}>{props.user.name}</span>
-          <svg className={classes.user__icon}>
-            <use xlinkHref={`${svgSprite}#icon-chevron-small-down`}></use>
-          </svg>
-        </div>
-        <ul className={classes.subMenu}>
-          <li className={classes.subMenu__item}>
-            <Link to="/user/account">my account</Link>
-          </li>
-          <li className={classes.subMenu__item}>
-            <Link to="/user/tours">my tours</Link>
-          </li>
-          <li className={classes.subMenu__item}>
-            <Link to="/logout">logout</Link>
-          </li>
-        </ul>
+        <NavUserItem photo={props.user.photo} name={props.user.name} />
+        <ul className={classes.subMenu}>{navItems}</ul>
       </Aux>
     );
   }

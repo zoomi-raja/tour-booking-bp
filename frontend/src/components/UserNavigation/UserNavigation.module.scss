@@ -1,7 +1,11 @@
+@import '../../utility.scss';
 .navigation {
   flex-grow: 1;
   color: #fff;
   list-style: none;
   background-color: var(--secondary-color);
   padding: 1rem 0;
+  @include respond(phone) {
+    display: flex;
+  }
 }

@@ -1,3 +1,4 @@
+@import '../../utility.scss';
 .card {
   position: relative;
   display: flex;
@@ -8,6 +9,9 @@
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
   color: var(--secondary-color);
   font-size: 1.2rem;
+  @include respond(sphone) {
+    margin-bottom: 2rem;
+  }
   &:after {
     content: '';
     position: absolute;
@@ -25,6 +29,10 @@
     transform: scale(2) translateX(0) translateY(0) rotate(-28deg);
   }
   .card__wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
     .card__header {
       position: relative;
       .card__name {
@@ -100,6 +108,9 @@
     transition-delay: 300ms;
     .card__sub_heading {
       margin-top: 48%;
+      @include respond(sphone) {
+        margin-top: 20%;
+      }
     }
   }
   &:hover .card__text_wrap {

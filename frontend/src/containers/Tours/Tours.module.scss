@@ -1,6 +1,13 @@
+@import '../../utility';
 .tour_cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 5rem;
   margin: 0 auto;
+  @include respond(tab-port) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond(sphone) {
+    display: block;
+  }
 }

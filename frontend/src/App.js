@@ -9,10 +9,11 @@ import { Provider } from 'react-redux';
 
 // reducers
 import authReducer from './store/reducers/auth';
-
 const storeEnhancer =
   process.env.NODE_ENV === 'development'
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      : compose
     : compose;
 
 const store = createStore(
