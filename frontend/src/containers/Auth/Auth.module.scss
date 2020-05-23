@@ -1,6 +1,10 @@
+@import '../../utility.scss';
 .container {
   background-color: var(--background-color);
   height: 100%;
+  @include respond(phone) {
+    background-color: #fff;
+  }
 }
 .remainingHeight {
   flex-grow: 1;

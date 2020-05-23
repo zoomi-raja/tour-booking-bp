@@ -18,7 +18,7 @@ const storeEnhancer =
 
 const store = createStore(
   combineReducers({ auth: authReducer }),
-  compose(applyMiddleware(thunk))
+  storeEnhancer(applyMiddleware(thunk))
 );
 function App() {
   return (
