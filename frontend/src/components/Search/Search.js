@@ -9,7 +9,7 @@ const search = (props) => (
       placeholder="search tours"
     />
     <button className={classes.search__button}>
-      <svg className={classes.search__icon}>
+      <svg className={classes.search__button__icon}>
         <use xlinkHref={svgSprite + '#icon-magnifying-glass'}></use>
       </svg>
     </button>

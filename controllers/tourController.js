@@ -56,7 +56,21 @@ exports.aliasTopCheapTours = (req, res, next) => {
 exports.getAllTours = async (req, res) => {
   try {
     const features = new APIFeatures(Tour, req.query);
-    features.filter().sort().limitFields().paginate();
+    features
+      .filter((queryObj) => {
+        if (queryObj['search']) {
+          let regex = new RegExp(`${queryObj['search']}`, 'i');
+          // { $or:[ {'startLocation.description': /Miami, USA/ },{'name':/The Snow Adventurer/}]}
+          queryObj['$or'] = [
+            { 'startLocation.description': regex },
+            { name: regex },
+          ];
+          delete queryObj.search;
+        }
+      })
+      .sort()
+      .limitFields()
+      .paginate();
 
     const tours = await features.query; //.explain();
     res
