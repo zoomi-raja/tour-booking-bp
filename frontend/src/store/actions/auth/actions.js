@@ -35,6 +35,12 @@ export const logout = () => {
     type: actionTypes.AUTH_LOGOUT,
   };
 };
+export const setRedirectPath = (path) => {
+  return {
+    type: actionTypes.SET_AUTH_REDIRECT,
+    path: path,
+  };
+};
 export const authSuccess = (authData) => {
   return {
     type: actionTypes.AUTH_SUCCESS,

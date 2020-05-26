@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './style.module.scss';
 import Button from '../../UI/Button/Button';
 import Aux from '../../../hoc/Aux';
@@ -17,6 +17,16 @@ const attemptLogin = (fields, storeAction) => {
   };
 };
 const Form = (prop) => {
+  const setPathFunc = prop.setRedirectPath;
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const path = params.get('path');
+
+    if (path) {
+      setPathFunc(path);
+    }
+    return () => {};
+  }, [setPathFunc]);
   let errorClass = [classes.error];
   if (prop.error) {
     errorClass.push(classes.error_show);
@@ -107,6 +117,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onAuth: (email, password) => {
       dispatch(actions.auth(email, password));
+    },
+    setRedirectPath: (path) => {
+      dispatch(actions.setRedirectPath(path));
     },
   };
 };

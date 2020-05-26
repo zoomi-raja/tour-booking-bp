@@ -4,19 +4,24 @@ import svgSprite from '../../assets/icons.svg';
 import tourGuide from './zoomi.jpeg';
 import Button from '../UI/Button/Button';
 import axios from '../../utils/Axios';
+import { withRouter } from 'react-router-dom';
 // stripe
 import { loadStripe } from '@stripe/stripe-js';
+import { connect } from 'react-redux';
 
-const useThisFunction = (stripeData, toggleLoading) => {
+const useThisFunction = (stripeData, toggleLoading, props) => {
   return async () => {
-    try {
-      toggleLoading(true);
-      await stripeData.stripe.redirectToCheckout({
-        sessionId: stripeData.sessionDetail.data.session.id,
-      });
-    } catch (error) {
-      console.log(error);
-      toggleLoading(false);
+    if (!props.isAuthenticated) {
+      props.history.push(`/auth/login?path=${props.location.pathname}`);
+    } else {
+      try {
+        toggleLoading(true);
+        await stripeData.stripe.redirectToCheckout({
+          sessionId: stripeData.sessionDetail.data.session.id,
+        });
+      } catch (error) {
+        toggleLoading(false);
+      }
     }
   };
 };
@@ -35,6 +40,13 @@ const TourStats = (props) => {
     stripe: {},
   });
   useEffect(() => {
+    // if not auth just return
+    if (!props.isAuthenticated) {
+      toggleLoading(false);
+      return () => {
+        return false;
+      };
+    }
     const stripePromise = loadStripe(
       'pk_test_hHR7Lrw7Dii4oWxrN8XMjTLL00QcU9lqxb'
     );
@@ -53,7 +65,8 @@ const TourStats = (props) => {
         stripe: {},
       });
     };
-  }, [props.id]);
+  }, [props.id, props.isAuthenticated]);
+
   return (
     <div className={classes['key-details']}>
       <div className={classes.guides__section}>
@@ -134,7 +147,7 @@ const TourStats = (props) => {
           btnSize="btn--small"
           classes="mt-1"
           disabled={loading}
-          clicked={useThisFunction(stripeState, toggleLoading)}
+          clicked={useThisFunction(stripeState, toggleLoading, props)}
         >
           {loading ? 'loading' : 'Book now'}
         </Button>
@@ -142,4 +155,9 @@ const TourStats = (props) => {
     </div>
   );
 };
-export default TourStats;
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: !!state.auth.token,
+  };
+};
+export default connect(mapStateToProps)(withRouter(TourStats));

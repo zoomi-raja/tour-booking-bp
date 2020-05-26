@@ -43,11 +43,17 @@ const auth = (state = initialState, action) => {
         token: null,
         user: null,
         loading: false,
+        authRedirectPath: '/',
       };
     case actionTypes.UPDATE_USER:
       return {
         ...state,
         user: action.user,
+      };
+    case actionTypes.SET_AUTH_REDIRECT:
+      return {
+        ...state,
+        authRedirectPath: action.path,
       };
     default:
       return state;

@@ -30,7 +30,7 @@ class Tours extends React.Component {
       html = (
         <Aux>
           <Showcase />
-          <section id="tours" className="container pt-6">
+          <section id="tours" className="container">
             <div className={classes.tour_cards}>{tours}</div>
           </section>
         </Aux>
