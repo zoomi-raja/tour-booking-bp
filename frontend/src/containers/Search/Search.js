@@ -43,6 +43,9 @@ class Search extends React.Component {
     // move it to stack
     this.setState({ results: [], count: 0, text: '' });
   };
+  handleSubmit = (e) => {
+    e.preventDefault();
+  };
   render() {
     let html = (
       <Results
@@ -57,7 +60,7 @@ class Search extends React.Component {
         className={classes.container}
         ref={(node) => (this.container = node)}
       >
-        <form action="#" className={classes.search}>
+        <form className={classes.search} onSubmit={this.handleSubmit}>
           <input
             type="text"
             className={classes.search__input}

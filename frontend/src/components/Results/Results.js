@@ -1,6 +1,9 @@
 import React from 'react';
 import classes from './Results.module.scss';
 import Item from './Item/Item';
+import { connect } from 'react-redux';
+import * as searchAction from '../../store/actions/search/action';
+
 const Results = (props) => {
   let Results = [];
   let style = {};
@@ -19,10 +22,13 @@ const Results = (props) => {
     Results.unshift(
       <Item
         key={0}
-        to={`/search?search=${props.searchStr}`}
+        to={`/search?text=${props.searchStr}`}
         text={`Total ${props.count} Results Found`}
         location="View All"
-        onClick={props.clearData}
+        onClick={(e) => {
+          props.updateSearch(e, props.searchStr);
+          props.clearData();
+        }}
       />
     );
   } else {
@@ -34,4 +40,12 @@ const Results = (props) => {
     </ul>
   );
 };
-export default Results;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateSearch: (event, text) => {
+      event.preventDefault();
+      dispatch(searchAction.updateSearch(text));
+    },
+  };
+};
+export default connect(null, mapDispatchToProps)(Results);

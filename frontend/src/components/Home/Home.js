@@ -5,6 +5,7 @@ import Auth from '../../containers/Auth/Auth';
 import Logout from '../../containers/Auth/Logout/Logout';
 import Payment from '../Payment/Payment';
 import User from '../../containers/User/User';
+import SearchResults from '../SearchResults/SearchResults';
 import NotFound from '../Notfound/Notfound';
 import { Switch, Route } from 'react-router-dom';
 import Spinner from '../UI/Spinner/Spinner';
@@ -30,6 +31,7 @@ class Home extends React.Component {
                 <Tourdetail {...props} key={window.location.pathname} />
               )}
             />
+            <Route path="/search" component={SearchResults} />
             <Route path="/auth" component={Auth} />
             <Route path="/logout" exact component={Logout} />
             <Route path="/payment/:sessionID" component={Payment} />
