@@ -62,7 +62,6 @@ reviewSchema.statics.calcAverageRatings = async function (tourId) {
       ratingsAverage: 0,
     });
   }
-  console.log(stats);
 };
 reviewSchema.post('save', function () {
   // here this is current review

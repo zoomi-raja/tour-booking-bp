@@ -11,7 +11,6 @@ const Payment = (props) => {
         `/bookings/success/${props.match.params.sessionID}`
       );
       toggleLoading(false);
-      console.log(booking);
       setTimeout(() => {
         props.history.push('/');
       }, 1000);
