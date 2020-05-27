@@ -1,3 +1,4 @@
+@import '../../utility.scss';
 .navbar {
   background-color: var(--secondary-color);
   color: #fff;
@@ -6,5 +7,8 @@
     justify-content: space-between;
     align-items: center;
     font-size: 1.5rem;
+    @include respond(phone) {
+      flex-wrap: wrap;
+    }
   }
 }

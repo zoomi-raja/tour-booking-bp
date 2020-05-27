@@ -56,12 +56,35 @@ exports.aliasTopCheapTours = (req, res, next) => {
 exports.getAllTours = async (req, res) => {
   try {
     const features = new APIFeatures(Tour, req.query);
-    features.filter().sort().limitFields().paginate();
-
+    features
+      .filter((queryObj) => {
+        if (queryObj['search']) {
+          let regex = new RegExp(`${queryObj['search']}`, 'i');
+          // { $or:[ {'startLocation.description': /Miami, USA/ },{'name':/The Snow Adventurer/}]}
+          queryObj['$or'] = [
+            { 'startLocation.description': regex },
+            { name: regex },
+          ];
+          delete queryObj.search;
+        }
+      })
+      .sort()
+      .limitFields()
+      .paginate();
     const tours = await features.query; //.explain();
-    res
-      .status(200)
-      .json({ status: 'success', results: tours.length, data: { tours } });
+    const response = {
+      status: 'success',
+      results: tours.length,
+      data: { tours },
+    };
+    if (req.query.search) {
+      let regex = new RegExp(`${req.query.search}`, 'i');
+      const count = await Tour.count({
+        $or: [{ 'startLocation.description': regex }, { name: regex }],
+      });
+      response.count = count;
+    }
+    res.status(200).json(response);
   } catch (err) {
     res.status(404).json({ status: 'fail', message: err });
   }

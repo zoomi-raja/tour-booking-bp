@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from '../../components/Logo/Logo';
-import Search from '../../components/Search/Search';
+import Search from '../../containers/Search/Search';
 import Navigation from '../../components/Header/Navbar/Navigation/Navigation';
 import Sidebar from '../../components/Header/Navbar/Sidebar/Sidebar';
 import classes from './Navbar.module.scss';
