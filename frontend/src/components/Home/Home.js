@@ -24,7 +24,12 @@ class Home extends React.Component {
       <Layout>
         <Suspense fallback={<Spinner />}>
           <Switch>
-            <Route path="/tour/:id" component={Tourdetail} />
+            <Route
+              path="/tour/:id"
+              component={(props) => (
+                <Tourdetail {...props} key={window.location.pathname} />
+              )}
+            />
             <Route path="/auth" component={Auth} />
             <Route path="/logout" exact component={Logout} />
             <Route path="/payment/:sessionID" component={Payment} />

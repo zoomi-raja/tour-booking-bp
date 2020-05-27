@@ -71,11 +71,20 @@ exports.getAllTours = async (req, res) => {
       .sort()
       .limitFields()
       .paginate();
-
     const tours = await features.query; //.explain();
-    res
-      .status(200)
-      .json({ status: 'success', results: tours.length, data: { tours } });
+    const response = {
+      status: 'success',
+      results: tours.length,
+      data: { tours },
+    };
+    if (req.query.search) {
+      let regex = new RegExp(`${req.query.search}`, 'i');
+      const count = await Tour.count({
+        $or: [{ 'startLocation.description': regex }, { name: regex }],
+      });
+      response.count = count;
+    }
+    res.status(200).json(response);
   } catch (err) {
     res.status(404).json({ status: 'fail', message: err });
   }

@@ -1,34 +1,39 @@
-.search {
-  flex: 0 0 50%;
-  text-align: center;
-  &__input {
-    font-family: inherit;
-    font-size: inherit;
+.container {
+  flex: 0 0 40%;
+  .search {
+    text-align: center;
     width: 90%;
-    color: var(--gray-color-dark);
-    background-color: var(--gray-color-light1);
-    padding: 0.7rem 2rem;
-    border-radius: 100px;
-    margin-right: -3.5rem;
-    transition: 0.2s all;
-    border: none;
-    outline: none;
-
-    &:focus {
-      outline: none;
+    margin: 0 auto;
+    position: relative;
+    &__input {
       width: 95%;
-      background-color: var(--gray-color-light3);
+      font-family: inherit;
+      font-size: inherit;
+      color: var(--gray-color-dark);
+      background-color: var(--gray-color-light1);
+      padding: 0.7rem 2rem;
+      border-radius: 100px;
+      margin-right: -3.5rem;
+      transition: 0.2s all;
+      border: none;
+      outline: none;
+
+      &:focus {
+        outline: none;
+        width: 100%;
+        background-color: var(--gray-color-light3);
+      }
     }
-  }
-  &__button {
-    border: none;
-    background-color: var(--gray-color-light2);
-    vertical-align: middle;
-    cursor: pointer;
-    &__icon {
-      height: 2rem;
-      width: 2rem;
-      fill: var(--gray-color-dark);
+    &__button {
+      border: none;
+      background-color: var(--gray-color-light2);
+      vertical-align: middle;
+      cursor: pointer;
+      &__icon {
+        height: 2rem;
+        width: 2rem;
+        fill: var(--gray-color-dark);
+      }
     }
   }
 }

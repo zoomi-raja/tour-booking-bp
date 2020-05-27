@@ -1,0 +1,12 @@
+.results {
+  list-style: none;
+  background-color: #fff;
+  position: absolute;
+  left: 3rem;
+  right: 3rem;
+  transform: translateX(8px);
+  border: 1px solid #9494b3;
+  text-align: left;
+  font-size: 1.3rem;
+  z-index: 100;
+}
