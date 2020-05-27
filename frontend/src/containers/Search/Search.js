@@ -1,7 +1,7 @@
 import React from 'react';
 import svgSprite from '../../assets/icons.svg';
 import classes from './Search.module.scss';
-import Results from './Results/Results';
+import Results from '../../components/Results/Results';
 import axios from '../../utils/Axios';
 class Search extends React.Component {
   constructor(props) {
