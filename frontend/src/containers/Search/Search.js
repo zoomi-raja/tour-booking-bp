@@ -11,6 +11,7 @@ class Search extends React.Component {
       text: '',
       count: 0,
       loading: false,
+      touched: false,
     };
     document.addEventListener('click', this.handleClick);
   }
@@ -36,12 +37,13 @@ class Search extends React.Component {
         results: results.data.data.tours,
         count: results.data.count,
         loading: false,
+        touched: true,
       });
     }
   };
   clearSearch = () => {
     // move it to stack
-    this.setState({ results: [], count: 0, text: '' });
+    this.setState({ results: [], count: 0, text: '', touched: false });
   };
   handleSubmit = (e) => {
     e.preventDefault();
@@ -53,6 +55,7 @@ class Search extends React.Component {
         tours={this.state.results}
         count={this.state.count}
         clearData={this.clearSearch}
+        touched={this.state.touched}
       />
     );
     return (

@@ -26,8 +26,20 @@ const Results = (props) => {
         text={`Total ${props.count} Results Found`}
         location="View All"
         onClick={(e) => {
-          props.updateSearch(e, props.searchStr);
+          props.updateSearch(props.searchStr);
           props.clearData();
+        }}
+      />
+    );
+  } else if (props.touched) {
+    Results.push(
+      <Item
+        to=""
+        key={0}
+        text={`Total ${props.count} Results Found`}
+        location="No Record Found"
+        onClick={(e) => {
+          e.preventDefault();
         }}
       />
     );
@@ -42,8 +54,7 @@ const Results = (props) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateSearch: (event, text) => {
-      event.preventDefault();
+    updateSearch: (text) => {
       dispatch(searchAction.updateSearch(text));
     },
   };
