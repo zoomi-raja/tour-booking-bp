@@ -12,4 +12,4 @@ EXPOSE 8000
 
 RUN npm i -g nodemon
 
-CMD ["npm", "start"]
+CMD ["npm","run", "dev"]

@@ -238,27 +238,40 @@ exports.getDistances = async (req, res, next) => {
     );
   }
   const multiplier = unit === 'mi' ? 0.000621371 : 0.001;
-  const distances = await Tour.aggregate([
-    {
-      $geoNear: {
-        //should be first in tunnel. tunnel could be already filled if any aggregation middleware is in place
-        near: { type: 'point', coordinates: [lng * 1, lat * 1] },
-        key: 'startLocation',
-        distanceField: 'distance',
-        distanceMultiplier: multiplier,
+  try {
+    const distances = await Tour.aggregate([
+      {
+        $geoNear: {
+          //should be first in tunnel. tunnel could be already filled if any aggregation middleware is in place
+          near: {
+            type: 'point',
+            coordinates: [lng * 1, lat * 1],
+          },
+          key: 'startLocation',
+          distanceField: 'distance',
+          distanceMultiplier: multiplier,
+          spherical: true,
+        },
       },
-    },
-    {
-      $project: {
-        distance: 1,
-        name: 1,
+      {
+        $project: {
+          distance: 1,
+          name: 1,
+        },
       },
-    },
-  ]);
-  res.status(200).json({
-    status: 'success',
-    data: {
-      tour: distances,
-    },
-  });
+    ]);
+    res.status(200).json({
+      status: 'success',
+      data: {
+        tour: distances,
+      },
+    });
+  } catch (e) {
+    res.status(200).json({
+      status: 'success',
+      data: {
+        tour: e,
+      },
+    });
+  }
 };
