@@ -367,7 +367,7 @@
       "2022-01-30T10:00:00.000Z"
     ],
     "_id": "5c88fa8cf4afda39709c2970",
-    "name": "The Hiker",
+    "name": "The Tough Hiker",
     "duration": 3,
     "maxGroupSize": 8,
     "difficulty": "medium",
@@ -463,7 +463,7 @@
       "2021-09-01T09:00:00.000Z"
     ],
     "_id": "5c88fa8cf4afda39709c296c",
-    "name": "Sun Rise",
+    "name": "The Sun Rise",
     "duration": 2,
     "maxGroupSize": 8,
     "difficulty": "easy",
