@@ -1,7 +1,7 @@
 [
   {
     "startLocation": {
-      "description": "JTL, Dubai, UAE",
+      "description": "Dubai, UAE",
       "type": "Point",
       "coordinates": [55.137757, 25.066006],
       "address": "Cluster A - Jumeirah Lakes Towers - Dubai"
@@ -61,7 +61,7 @@
   },
   {
     "startLocation": {
-      "description": "Marina, Dubai, UAE",
+      "description": "Dubai, UAE",
       "type": "Point",
       "coordinates": [55.1308154, 25.0832683],
       "address": "Tiger Tower, Marina"
@@ -168,10 +168,10 @@
   },
   {
     "startLocation": {
-      "description": "Barsha Heights, Dubai, UAE",
+      "description": "Dubai, UAE",
       "type": "Point",
       "coordinates": [55.170153, 25.0972484],
-      "address": "Grand Millennium Hotel, Dubai"
+      "address": "Grand Millennium Hotel,Barsha Heights, Dubai"
     },
     "ratingsAverage": 4.7,
     "ratingsQuantity": 7,
@@ -204,28 +204,28 @@
         "_id": "5c88fa8cf4afda39709c2965",
         "description": "Dubai Miracle Garden",
         "type": "Point",
-        "coordinates": [55.2361791, 25.0787994],
+        "coordinates": [55.242276, 25.0600069],
         "day": 1
       },
       {
         "_id": "5c88fa8cf4afda39709c2964",
         "description": "Global Village",
         "type": "Point",
-        "coordinates": [55.2361791, 25.0787994],
+        "coordinates": [55.2269551, 25.0600058],
         "day": 2
       },
       {
         "_id": "5c88fa8cf4afda39709c2963",
         "description": "IMG Worlds of Adventure",
         "type": "Point",
-        "coordinates": [55.2361791, 25.0787994],
+        "coordinates": [55.3066369, 25.0800786],
         "day": 3
       }
     ]
   },
   {
     "startLocation": {
-      "description": "Bur Dubai, Dubai, UAE",
+      "description": "Dubai, UAE",
       "type": "Point",
       "coordinates": [55.2949939, 25.2633631],
       "address": "Palm Beach Hotel Bur Dubai"
@@ -278,10 +278,10 @@
   },
   {
     "startLocation": {
-      "description": "Taj Dubai, UAE",
+      "description": "Dubai, UAE",
       "type": "Point",
       "coordinates": [55.264999, 25.1924344],
-      "address": "Burj Khalifa Street - Dubai - UAE"
+      "address": "Burj Khalifa Street - Taj Dubai - UAE"
     },
     "ratingsAverage": 3.9,
     "ratingsQuantity": 7,
@@ -349,10 +349,10 @@
   },
   {
     "startLocation": {
-      "description": "DoubleTree by Hilton, Ras Al Khaimah, UAE",
+      "description": "Ras Al Khaimah, UAE",
       "type": "Point",
       "coordinates": [55.9734255, 25.7978904],
-      "address": "6 km from both Mosque Shaikh Zayed"
+      "address": "6 km from both Mosque Shaikh Zayed, DoubleTree by Hilton"
     },
     "ratingsAverage": 4.8,
     "ratingsQuantity": 6,
@@ -402,10 +402,10 @@
   },
   {
     "startLocation": {
-      "description": "BM Beach Resort, Ras Al Khaimah, UAE",
+      "description": "Ras Al Khaimah, UAE",
       "type": "Point",
       "coordinates": [55.7897854, 25.6735797],
-      "address": "Al Jazeera Road, RAK, UAE"
+      "address": "Al Jazeera Road, BM Beach Resort, RAK, UAE"
     },
     "ratingsAverage": 4.7,
     "ratingsQuantity": 7,
@@ -445,7 +445,7 @@
   },
   {
     "startLocation": {
-      "description": "Address Fujairah Beach Resort, Fujairah, UAE",
+      "description": "Fujairah, UAE",
       "type": "Point",
       "coordinates": [56.3752449, 25.4652605],
       "address": "Address Fujairah Beach Resort"
