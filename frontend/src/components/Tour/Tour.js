@@ -4,6 +4,12 @@ import classes from './Tour.module.scss';
 import svgSprite from '../../assets/icons.svg';
 import tempImg from '../../assets/qudra-lake.jpg';
 import Button from '../UI/Button/Button';
+import config from '../../config';
+
+const addDefaultSrc = (event) => {
+  event.target.src = tempImg;
+};
+
 const Tour = (props) => {
   const date = new Date(props.tour.startDates[0]).toLocaleString('en-us', {
     month: 'short',
@@ -15,7 +21,11 @@ const Tour = (props) => {
     <div className={classes.card}>
       <div className={classes.card__wrap}>
         <div className={classes.card__header}>
-          <img src={tempImg} alt="tour" />
+          <img
+            src={`${config.IMAGES_PATH}/tours/${props.tour.images[0]}`}
+            alt="tour"
+            onError={addDefaultSrc}
+          />
           <span className={classes.card__name}>{props.tour.name}</span>
         </div>
         <div className={classes.card__details}>

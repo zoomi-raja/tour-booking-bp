@@ -1,6 +1,6 @@
 const Tour = require('../models/tourModel');
 const Booking = require('../models/bookingModel');
-const token = 'sk_test_vVnvR0IuUzCgifrC8eew8HIo008Etq1Mkz';
+const token = process.env.STRIPE_SK;
 const stripe = require('stripe')(token);
 const catchAsync = require('../utils/catchAsync');
 const axios = require('axios');
@@ -10,7 +10,10 @@ exports.getStripeSession = catchAsync(async (req, res, next) => {
   const tour = await Tour.findById(req.params.tourID);
   const tourSession = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
-    success_url: `http://localhost:3000/payment/{CHECKOUT_SESSION_ID}`, // for same url dynamic ${req.protocol}://${req.get('host')}
+    success_url:
+      process.env.NODE_ENV === 'development'
+        ? `http://localhost:3000/payment/{CHECKOUT_SESSION_ID}`
+        : `${req.protocol}://${req.get('host')}/payment/{CHECKOUT_SESSION_ID}`, // for same url dynamic ${req.protocol}://${req.get('host')}
     cancel_url: `${req.protocol}://${req.get('host')}/tour/${
       req.params.tourID
     }`,

@@ -7,9 +7,7 @@ const Payment = (props) => {
       axios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${localStorage.getItem('token')}`;
-      const booking = await axios.post(
-        `/bookings/success/${props.match.params.sessionID}`
-      );
+      await axios.post(`/bookings/success/${props.match.params.sessionID}`);
       toggleLoading(false);
       setTimeout(() => {
         props.history.push('/');

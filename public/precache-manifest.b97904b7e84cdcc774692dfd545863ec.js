@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5ec0ab1032327aa6059733d9f646f8a6",
+    "revision": "2d71a5928af81bc713934d949f03abd4",
     "url": "/index.html"
   },
   {
-    "revision": "34b14a5b3be132d5a476",
+    "revision": "2badd8e099691989902d",
     "url": "/static/css/3.fadb0a9c.chunk.css"
   },
   {
@@ -12,32 +12,32 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/4.b4a16772.chunk.css"
   },
   {
-    "revision": "f5ebd17f1fc7b22839b5",
+    "revision": "e4763b8490a983f745c8",
     "url": "/static/css/main.ba07b2a4.chunk.css"
   },
   {
-    "revision": "96dc763ff23436afb4da",
-    "url": "/static/js/2.77b3486a.chunk.js"
+    "revision": "b166f7931858ea4c780c",
+    "url": "/static/js/2.d697c5e4.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/static/js/2.77b3486a.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.d697c5e4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "34b14a5b3be132d5a476",
-    "url": "/static/js/3.496896c4.chunk.js"
+    "revision": "2badd8e099691989902d",
+    "url": "/static/js/3.31faf1a4.chunk.js"
   },
   {
     "revision": "0885a30bb1e220a53564",
     "url": "/static/js/4.960a644e.chunk.js"
   },
   {
-    "revision": "f5ebd17f1fc7b22839b5",
-    "url": "/static/js/main.2046ccde.chunk.js"
+    "revision": "e4763b8490a983f745c8",
+    "url": "/static/js/main.3f20e98c.chunk.js"
   },
   {
-    "revision": "99b6d8fbea41f4a70bb3",
-    "url": "/static/js/runtime-main.0a725f50.js"
+    "revision": "fae097771ceeabbd259b",
+    "url": "/static/js/runtime-main.865ce750.js"
   },
   {
     "revision": "a64ea8d25bf6d54c8c8e5f9078c2216f",
@@ -64,8 +64,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/qudra-image-3.ab07df18.jpg"
   },
   {
-    "revision": "dbfa09da7f4f7de49594441d1b3315be",
-    "url": "/static/media/qudra-lake-cover.dbfa09da.jpg"
+    "revision": "6f48cf29c9ef6d2a7850d06650b839b7",
+    "url": "/static/media/qudra-lake-cover.6f48cf29.jpg"
   },
   {
     "revision": "9493e1aa71a180ae88e5d874e95e28b4",
