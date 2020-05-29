@@ -26,3 +26,15 @@ pm.environment.set("JWT", pm.response.json().token);
 As of now very limited data is present in the app. all locations belongs to UAE so if user is in dubai then it will show accurated location around user otherwise i populated it with dummy data
 <img src="https://github.com/zoomi-raja/tour-booking-bp/blob/master/travelmatescreenshot.png" alt="travelMate" />
 
+## technical Aspects
+marking importent aspects for new developers to understand the basics how things can be done.
+**Frontend**
+1. [Carousel](https://github.com/zoomi-raja/tour-booking-bp/tree/master/frontend/src/containers/CarouselContainer)
+2. [Redux Config](https://github.com/zoomi-raja/tour-booking-bp/blob/master/frontend/src/App.js#L14) its important to note that if __REDUX_DEVTOOLS_EXTENSION_COMPOSE__ is not agvailable on env app will not work so during dev if you want to check on phone it wont work and through error
+3. [Lazy Loaded Map] (https://github.com/zoomi-raja/tour-booking-bp/tree/master/frontend/src/components/Map)
+4. [If image Not available] (https://github.com/zoomi-raja/tour-booking-bp/blob/master/frontend/src/components/Tour/Tour.js#L27)
+5. [Auth Header] (https://github.com/zoomi-raja/tour-booking-bp/blob/master/frontend/src/utils/Axios.js)
+6. 
+**backend**
+1. [CatchAsync] (https://github.com/zoomi-raja/tour-booking-bp/blob/master/utils/catchAsync.js) 
+
