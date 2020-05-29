@@ -34,7 +34,7 @@ marking importent aspects for new developers to understand the basics how things
 3. [Lazy Loaded Map](https://github.com/zoomi-raja/tour-booking-bp/tree/master/frontend/src/components/Map) The whole component it self is lazy loaded on detail of tour is clicked + until session is not returned from api Stripe payment gateway is not loaded so that is lazy loaded too
 4. [If image Not available](https://github.com/zoomi-raja/tour-booking-bp/blob/master/frontend/src/components/Tour/Tour.js#L27) small trick which works like a charm actually i was very happy first time when i came to know about this.
 5. [Auth Header](https://github.com/zoomi-raja/tour-booking-bp/blob/master/frontend/src/utils/Axios.js) nothing just if else if user is logged in attach header to request interceptor and on response interceptor if token is not valid anymore just remove localstorage so one place to handle all the fuss.
-6. 
+6. [Mixins](https://github.com/zoomi-raja/tour-booking-bp/blob/master/frontend/src/utility.scss) its very handy if ones want to write media quries i guess its best place to use. here is the [usage](https://github.com/zoomi-raja/tour-booking-bp/blob/master/frontend/src/components/Header/Showcase/Showcase.module.scss)
+
 **backend**
 1. [CatchAsync](https://github.com/zoomi-raja/tour-booking-bp/blob/master/utils/catchAsync.js) 
-
