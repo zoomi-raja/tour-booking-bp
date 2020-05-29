@@ -29,12 +29,12 @@ As of now very limited data is present in the app. all locations belongs to UAE 
 ## technical Aspects
 marking importent aspects for new developers to understand the basics how things can be done.
 **Frontend**
-1. [Carousel](https://github.com/zoomi-raja/tour-booking-bp/tree/master/frontend/src/containers/CarouselContainer)
+1. [Carousel](https://github.com/zoomi-raja/tour-booking-bp/tree/master/frontend/src/containers/CarouselContainer) as vanilla js scrollLeft by default dont have smoth scroll its just jumps
 2. [Redux Config](https://github.com/zoomi-raja/tour-booking-bp/blob/master/frontend/src/App.js#L14) its important to note that if __REDUX_DEVTOOLS_EXTENSION_COMPOSE__ is not agvailable on env app will not work so during dev if you want to check on phone it wont work and through error
-3. [Lazy Loaded Map] (https://github.com/zoomi-raja/tour-booking-bp/tree/master/frontend/src/components/Map)
-4. [If image Not available] (https://github.com/zoomi-raja/tour-booking-bp/blob/master/frontend/src/components/Tour/Tour.js#L27)
-5. [Auth Header] (https://github.com/zoomi-raja/tour-booking-bp/blob/master/frontend/src/utils/Axios.js)
+3. [Lazy Loaded Map](https://github.com/zoomi-raja/tour-booking-bp/tree/master/frontend/src/components/Map) The whole component it self is lazy loaded on detail of tour is clicked + until session is not returned from api Stripe payment gateway is not loaded so that is lazy loaded too
+4. [If image Not available](https://github.com/zoomi-raja/tour-booking-bp/blob/master/frontend/src/components/Tour/Tour.js#L27) small trick which works like a charm actually i was very happy first time when i came to know about this.
+5. [Auth Header](https://github.com/zoomi-raja/tour-booking-bp/blob/master/frontend/src/utils/Axios.js) nothing just if else if user is logged in attach header to request interceptor and on response interceptor if token is not valid anymore just remove localstorage so one place to handle all the fuss.
 6. 
 **backend**
-1. [CatchAsync] (https://github.com/zoomi-raja/tour-booking-bp/blob/master/utils/catchAsync.js) 
+1. [CatchAsync](https://github.com/zoomi-raja/tour-booking-bp/blob/master/utils/catchAsync.js) 
 
