@@ -26,8 +26,8 @@ const reviews = JSON.parse(fs.readFileSync(`${__dirname}/reviews.json`));
 const importData = async () => {
   try {
     await Tour.create(tours);
-    // await User.create(users, { validateBeforeSave: false });
-    // await Review.create(reviews);
+    await User.create(users, { validateBeforeSave: false });
+    await Review.create(reviews);
     console.log('data successfully loaded');
     process.exit();
   } catch (err) {
@@ -38,8 +38,8 @@ const importData = async () => {
 const deleteData = async () => {
   try {
     await Tour.deleteMany();
-    // await Review.deleteMany();
-    // await User.deleteMany();
+    await Review.deleteMany();
+    await User.deleteMany();
     console.log('data has been successfully deleted');
     process.exit();
   } catch (err) {
