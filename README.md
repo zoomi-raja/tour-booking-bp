@@ -3,7 +3,8 @@
   <a href="https://github.com/zoomi-raja/tour-booking-bp">
     <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg" alt="contributions" />
   </a>
- </p>
+</p>
+
 ## Introduction
 A javascript based project. was thinking of what to do in pendemic lockdown. recetly like on start of 2020 i gave interview to a Austria base company tourradar so this project is base of following online resources
 - [TourRadar](https://www.tourradar.com/)
@@ -11,10 +12,10 @@ A javascript based project. was thinking of what to do in pendemic lockdown. rec
 
 so this project is basicly a pointer to js related tips which is can be easily skipped as time passes. Any Noob Developer who wanted to explore world of JS and how things can be done in JS way can go through the project and get the insights. I never worked opensource before in my life. and that could be because of self-conscious about sharing my code it has to start some day. so putting its as my 2020 reveleation since feburary 2020 and this one is first repo. Have to start from somewhere....!
 
-** project URL **
+**project URL**
 https://rocky-escarpment-09219.herokuapp.com/
 
-** postman setting to save auto token **
+**postman setting to save auto token**
 ```
 pm.environment.set("JWT", pm.response.json().token);
 
