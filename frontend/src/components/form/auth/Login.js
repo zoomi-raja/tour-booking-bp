@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import classes from './style.module.scss';
 import Button from '../../UI/Button/Button';
 import Aux from '../../../hoc/Aux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 // redux
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/auth/actions';
@@ -102,6 +102,9 @@ const Form = (prop) => {
             </label>
           </div>
         </div>
+        <span className={classes.bottom}>
+          Dont have Account ? <Link to="/auth/signup">Register</Link>
+        </span>
       </form>
     </Aux>
   );

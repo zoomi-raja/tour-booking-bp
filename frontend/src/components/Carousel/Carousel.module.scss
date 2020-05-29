@@ -1,0 +1,63 @@
+@import '../../utility.scss';
+.carousel {
+  position: relative;
+  &__content {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    background-color: #fff;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    & > div {
+      flex: 0 0 33%;
+      box-shadow: none;
+      @include respond(phone) {
+        flex: 0 0 50%;
+      }
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+    }
+  }
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    display: block;
+    color: #111;
+    cursor: pointer;
+    z-index: 9;
+    opacity: 0.75;
+    transform: translateY(-50%);
+    transition: opacity 0.15s cubic-bezier(0.4, 0, 1, 1);
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &--left {
+      left: 3.2rem;
+      @include respond(phone) {
+        left: 0;
+      }
+    }
+
+    &--right {
+      right: 3.2rem;
+      @include respond(phone) {
+        right: 0;
+      }
+    }
+    &__icon {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      background-color: var(--gray-color-light3);
+      padding: 1rem;
+    }
+  }
+}
