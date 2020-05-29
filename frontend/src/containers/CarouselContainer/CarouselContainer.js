@@ -39,21 +39,35 @@ class CarouselContainer extends React.Component {
   }
   async componentDidMount() {
     if ('geolocation' in navigator) {
-      const position = await this.getCoordinates();
-      await this.fetchData(
-        position.coords.latitude,
-        position.coords.longitude,
-        this.state.range
-      );
-      if (this.state.carousel.length === 0) {
-        this.fetchData(this.state.lat, this.state.lng, this.state.range);
+      try {
+        const position = await this.getCoordinates();
+        await this.fetchData(
+          position.coords.latitude,
+          position.coords.longitude,
+          this.state.range
+        );
+        if (this.state.carousel.length === 0) {
+          this.fetchData(this.state.lat, this.state.lng, this.state.range);
+        }
+      } catch (e) {
+        this.setState({ ...this.state, loading: false });
       }
     }
     this.setState({ ...this.state, loading: false });
   }
   render() {
-    let html;
-    if (this.state.carousel.length > 0) {
+    let html, loader;
+
+    if (this.state.loading) {
+      loader = (
+        <div className={classes.loader}>
+          <div className={classes.loader__item}></div>
+          <div className={classes.loader__item}></div>
+          <div className={classes.loader__item}></div>
+        </div>
+      );
+    }
+    if (this.state.carousel.length > 0 || this.state.loading) {
       html = (
         <Aux>
           <h1>
@@ -63,7 +77,7 @@ class CarouselContainer extends React.Component {
               onChange={(e) => {
                 const value = parseInt(e.target.value);
                 if (Number.isInteger(value)) {
-                  this.setState({ ...this.state, range: value });
+                  this.setState({ ...this.state, range: value, loading: true });
                   this.fetchData(this.state.lat, this.state.lng, value);
                 }
               }}
@@ -76,17 +90,12 @@ class CarouselContainer extends React.Component {
               <option value="50">50 KM</option>
             </select>
           </h1>
-          <Carousel items={this.state.carousel} />
+          {!this.state.loading ? (
+            <Carousel items={this.state.carousel} />
+          ) : (
+            loader
+          )}
         </Aux>
-      );
-    }
-    if (this.state.loading) {
-      html = (
-        <div className={classes.loader}>
-          <div className={classes.loader__item}></div>
-          <div className={classes.loader__item}></div>
-          <div className={classes.loader__item}></div>
-        </div>
       );
     }
     return <div className={classes.carousal_wrapper}>{html}</div>;
