@@ -24,5 +24,5 @@ pm.environment.set("JWT", pm.response.json().token);
 
 ## travelMate Functionality
 As of now very limited data is present in the app. all locations belongs to UAE so if user is in dubai then it will show accurated location around user otherwise i populated it with dummy data
-<img height="100" src="https://github.com/zoomi-raja/tour-booking-bp/blob/master/travelmatescreenshot.png" alt="travelMate" />
+<img src="https://github.com/zoomi-raja/tour-booking-bp/blob/master/travelmatescreenshot.png" alt="travelMate" />
 
