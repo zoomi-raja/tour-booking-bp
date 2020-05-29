@@ -154,6 +154,17 @@
       border: 2px solid var(--main-color) !important;
     }
   }
+  .bottom {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.6rem;
+    a,
+    a:visited {
+      color: var(--gray-color-dark);
+    }
+  }
 }
 .slideRight {
   text-align: right;

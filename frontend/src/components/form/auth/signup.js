@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './style.module.scss';
 import Button from '../../UI/Button/Button';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Aux from '../../../hoc/Aux';
 // redux
 import { connect } from 'react-redux';
@@ -131,6 +131,9 @@ const Form = (prop) => {
         >
           Register
         </Button>
+        <span className={classes.bottom}>
+          Already have Account ? <Link to="/auth/login">Login</Link>
+        </span>
       </form>
     </Aux>
   );
