@@ -1,4 +1,9 @@
-# TourMate-bp
+<p align="center">
+  <h1>TourMate-bp</h1>
+  <a href="https://github.com/zoomi-raja/tour-booking-bp">
+    <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg" alt="contributions" />
+  </a>
+ </p>
 ## Introduction
 A javascript based project. was thinking of what to do in pendemic lockdown. recetly like on start of 2020 i gave interview to a Austria base company tourradar so this project is base of following online resources
 - [TourRadar](https://www.tourradar.com/)
