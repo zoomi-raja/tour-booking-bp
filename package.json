@@ -1,7 +1,7 @@
 {
   "name": "naturs",
   "version": "1.0.0",
-  "description": "Learning node express mongodb",
+  "description": "Learning MERN",
   "main": "app.js",
   "scripts": {
     "start": "node server.js",
