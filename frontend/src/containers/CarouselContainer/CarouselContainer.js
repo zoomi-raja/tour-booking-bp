@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Carousel.module.scss';
 import Carousel from '../../components/Carousel/Carousel';
-
+import Shimmer from '../../components/UI/Shimmer/Shimmer';
 import axios from '../../utils/Axios';
 import Aux from '../../hoc/Aux';
 
@@ -56,17 +56,7 @@ class CarouselContainer extends React.Component {
     this.setState({ ...this.state, loading: false });
   }
   render() {
-    let html, loader;
-
-    if (this.state.loading) {
-      loader = (
-        <div className={classes.loader}>
-          <div className={classes.loader__item}></div>
-          <div className={classes.loader__item}></div>
-          <div className={classes.loader__item}></div>
-        </div>
-      );
-    }
+    let html;
     if (this.state.carousel.length > 0 || this.state.loading) {
       html = (
         <Aux>
@@ -93,7 +83,7 @@ class CarouselContainer extends React.Component {
           {!this.state.loading ? (
             <Carousel items={this.state.carousel} />
           ) : (
-            loader
+            <Shimmer />
           )}
         </Aux>
       );
