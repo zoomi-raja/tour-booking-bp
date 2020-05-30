@@ -13,7 +13,7 @@ A javascript based project. was thinking of what to do in pendemic lockdown. rec
 so this project is basicly a pointer to js related tips which is can be easily skipped as time passes. Any Noob Developer who wanted to explore world of JS and how things can be done in JS way can go through the project and get the insights. I never worked opensource before in my life. and that could be because of self-conscious about sharing my code it has to start some day. so putting its as my 2020 reveleation since feburary 2020 and this one is first repo. Have to start from somewhere....!
 
 **project URL**
-https://rocky-escarpment-09219.herokuapp.com/
+https://travelmate.herokuapp.com/
 
 **postman setting to save auto token**
 ```
