@@ -1,4 +1,4 @@
-FROM node:erbium
+FROM node:20-alpine
 
 RUN mkdir -p /usr/src/app
 
