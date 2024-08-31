@@ -1,20 +1,13 @@
+//to run this script ---> node import-dev-data.js --import
 const fs = require('fs');
 const mongoose = require('mongoose');
 const env = require('dotenv');
-env.config({ path: './config.env' });
+env.config({ path: '../../.env' });
 const Tour = require('./../../models/tourModel');
 const Review = require('./../../models/reviewModel');
 const User = require('./../../models/userModel');
 mongoose
-  .connect(
-    process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD),
-    {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect( process.env.DATABASE )
   .then((con) => {
     console.log('db connection successful');
   });
