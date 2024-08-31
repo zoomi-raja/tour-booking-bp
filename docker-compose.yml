@@ -2,20 +2,25 @@ version: '2'
 services:
   tour-api:
     image: tour-backend-api
+    container_name: node-backend
     build: .
     ports:
-      - 80:8000
+      - 80:3000
+    depends_on:
+      - mongo
     volumes:
       - ./:/usr/src/app
       - tour-volume:/usr/src/app/node_modules
   mongo:
-    image: mongo:3-xenial
+    image: mongo:latest
+    container_name: mongo-db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=pass
     volumes:
       - db-volume:/data/db
-      - db-config:/data/configdb
     ports:
       - '27017:27017'
 volumes:
   tour-volume:
   db-volume:
-  db-config:
