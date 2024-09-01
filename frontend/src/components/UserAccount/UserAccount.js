@@ -8,7 +8,7 @@ import PasswordUpdate from '../form/UpdatePassword';
 
 const UserAccount = (props) => {
   return (
-    <Aux>
+    <>
       <h1 className={classes.sectionHolder__title}>Your Account settings</h1>
       <div className={classes.sectionHolder__data}>
         <UploadPhoto />
@@ -23,7 +23,7 @@ const UserAccount = (props) => {
         ></div>
         <PasswordUpdate />
       </div>
-    </Aux>
+    </>
   );
 };
 export default UserAccount;

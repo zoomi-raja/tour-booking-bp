@@ -30,7 +30,7 @@ const Form = (prop) => {
     redirect = <Redirect to={prop.authRedirectPath} />;
   }
   return (
-    <Aux>
+    <>
       <div className={errorClass.join(' ')}>{prop.message}</div>
       <form
         className={classes.form}
@@ -135,7 +135,7 @@ const Form = (prop) => {
           Already have Account ? <Link to="/auth/login">Login</Link>
         </span>
       </form>
-    </Aux>
+    </>
   );
 };
 const mapStateToProps = (state) => {

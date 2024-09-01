@@ -20,12 +20,12 @@ class Tours extends React.Component {
       return <TourCard key={index} booking-data={tour} />;
     });
     return (
-      <Aux>
+      <>
         <h1 className={classes.sectionHolder__title}>My tours</h1>
         <div className={classes.sectionHolder__data}>
           <div className={classes.userTours}>{bookings}</div>
         </div>
-      </Aux>
+      </>
     );
   }
 }

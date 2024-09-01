@@ -1,5 +1,4 @@
 import React from 'react';
-import Aux from '../../hoc/Aux';
 import Tour from '../../components/Tour/Tour';
 import classes from './Tours.module.scss';
 import Showcase from '../../components/Header/Showcase/Showcase';
@@ -32,13 +31,13 @@ class Tours extends React.Component {
       html = <Spinner />;
     } else {
       html = (
-        <Aux>
+        <>
           <Showcase />
           <CarouselContainer />
           <section id="tours" className="container">
             <div className={classes.tour_cards}>{tours}</div>
           </section>
-        </Aux>
+        </>
       );
     }
     return html;

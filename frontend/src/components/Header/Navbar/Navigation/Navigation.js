@@ -3,7 +3,6 @@ import classes from './Navigation.module.scss';
 import { NavLink } from 'react-router-dom';
 import NavUserItem from './NavUserItem/NavUserItem';
 import NavItem from './NavItem/NavItem';
-import Aux from '../../../../hoc/Aux';
 // redux
 import { connect } from 'react-redux';
 const authLinks = [
@@ -35,10 +34,10 @@ const navigation = (props) => {
       return <NavItem key={index} {...item} />;
     });
     html = (
-      <Aux>
+      <>
         <NavUserItem photo={props.user.photo} name={props.user.name} />
         <ul className={classes.subMenu}>{navItems}</ul>
-      </Aux>
+      </>
     );
   }
   return <nav className={classes.nav_list}>{html}</nav>;
