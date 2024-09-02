@@ -1,7 +1,6 @@
 import React from 'react';
 import classes from './Tours.module.scss';
 import TourCard from './TourCard/TourCard';
-import Aux from '../../hoc/Aux';
 import axios from '../../utils/Axios';
 
 class Tours extends React.Component {

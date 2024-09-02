@@ -7,7 +7,7 @@ import Payment from '../Payment/Payment';
 import User from '../../containers/User/User';
 import SearchResults from '../SearchResults/SearchResults';
 import NotFound from '../Notfound/Notfound';
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Spinner from '../UI/Spinner/Spinner';
 
 // redux auth
@@ -24,7 +24,7 @@ class Home extends React.Component {
     return (
       <Layout>
         <Suspense fallback={<Spinner />}>
-          <Switch>
+          <Routes>
             <Route
               path="/tour/:id"
               component={(props) => (
@@ -38,7 +38,7 @@ class Home extends React.Component {
             <Route path="/user" component={User} />
             <Route path="/" exact component={Tours} />
             <Route path="*" component={NotFound} />
-          </Switch>
+          </Routes>
         </Suspense>
       </Layout>
     );

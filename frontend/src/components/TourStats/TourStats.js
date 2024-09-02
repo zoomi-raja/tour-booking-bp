@@ -4,15 +4,17 @@ import svgSprite from '../../assets/icons.svg';
 import tourGuide from './zoomi.jpeg';
 import Button from '../UI/Button/Button';
 import axios from '../../utils/Axios';
-import { withRouter } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 // stripe
 import { loadStripe } from '@stripe/stripe-js';
 import { connect } from 'react-redux';
 
 const useThisFunction = (stripeData, toggleLoading, props) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   return async () => {
     if (!props.isAuthenticated) {
-      props.history.push(`/auth/login?path=${props.location.pathname}`);
+      navigate(`/auth/login?path=${location.pathname}`);
     } else {
       try {
         toggleLoading(true);
@@ -160,4 +162,4 @@ const mapStateToProps = (state) => {
     isAuthenticated: !!state.auth.token,
   };
 };
-export default connect(mapStateToProps)(withRouter(TourStats));
+export default connect(mapStateToProps)(TourStats);

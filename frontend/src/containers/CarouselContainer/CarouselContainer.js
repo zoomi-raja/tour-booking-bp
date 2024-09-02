@@ -3,7 +3,6 @@ import classes from './Carousel.module.scss';
 import Carousel from '../../components/Carousel/Carousel';
 import Shimmer from '../../components/UI/Shimmer/Shimmer';
 import axios from '../../utils/Axios';
-import Aux from '../../hoc/Aux';
 
 class CarouselContainer extends React.Component {
   state = {
@@ -59,7 +58,7 @@ class CarouselContainer extends React.Component {
     let html;
     if (this.state.carousel.length > 0 || this.state.loading) {
       html = (
-        <Aux>
+        <>
           <h1>
             Locations near You...!
             <select
@@ -85,7 +84,7 @@ class CarouselContainer extends React.Component {
           ) : (
             <Shimmer />
           )}
-        </Aux>
+        </>
       );
     }
     return <div className={classes.carousal_wrapper}>{html}</div>;

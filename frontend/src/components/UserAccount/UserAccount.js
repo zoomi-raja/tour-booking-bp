@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './UserAccount.module.scss';
-import Aux from '../../hoc/Aux';
 // forms
 import UploadPhoto from '../UploadPhoto/UploadPhoto';
 import UserDetail from '../form/UserDetail';

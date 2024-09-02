@@ -39,8 +39,7 @@ const Carousel = (props) => {
   const carouselRef = useRef();
   return (
     <div className={classes.carousel} ref={containerRef}>
-      <a
-        href="#"
+      <button
         className={`${classes.carousel__arrow} ${classes['carousel__arrow--left']}`}
         onClick={(e) => {
           e.preventDefault();
@@ -58,11 +57,11 @@ const Carousel = (props) => {
         <svg className={classes.carousel__arrow__icon}>
           <use xlinkHref={`${svgSprite}#icon-chevron-thin-left`}></use>
         </svg>
-      </a>
+      </button>
       <div className={classes.carousel__content} ref={carouselRef}>
         {carouselItems}
       </div>
-      <a
+      <button
         href="#"
         className={`${classes.carousel__arrow} ${classes['carousel__arrow--right']}`}
         onClick={(e) => {
@@ -81,7 +80,7 @@ const Carousel = (props) => {
         <svg className={classes.carousel__arrow__icon}>
           <use xlinkHref={`${svgSprite}#icon-chevron-thin-right`}></use>
         </svg>
-      </a>
+      </button>
     </div>
   );
 };

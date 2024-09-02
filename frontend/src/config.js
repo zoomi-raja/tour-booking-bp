@@ -7,4 +7,5 @@ const prod = {
   IMAGES_PATH: '/img',
 };
 const config = process.env.NODE_ENV === 'development' ? dev : prod;
-export default { ...config };
+const environmentConfig = { ...config };
+export default environmentConfig;

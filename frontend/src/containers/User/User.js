@@ -1,7 +1,7 @@
 import React from 'react';
 import UserNavigation from '../../components/UserNavigation/UserNavigation';
 import classes from './User.module.scss';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Tours from '../../components/Tours/Tours';
 import UserAccount from '../../components/UserAccount/UserAccount';
@@ -12,14 +12,14 @@ class User extends React.Component {
     let html;
     if (this.props.isAuthenticated) {
       html = (
-        <Switch>
+        <Routes>
           <Route path="/user/account" component={UserAccount} />
           <Route path="/user/tours" component={Tours} />
-        </Switch>
+        </Routes>
       );
     } else {
       html = (
-        <Redirect to={`/auth/login?path=${this.props.location.pathname}`} />
+        <Navigate to={`/auth/login?path=${this.props.location.pathname}`} />
       );
     }
     return (

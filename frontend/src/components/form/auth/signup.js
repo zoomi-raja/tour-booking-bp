@@ -1,8 +1,7 @@
 import React from 'react';
 import classes from './style.module.scss';
 import Button from '../../UI/Button/Button';
-import { Redirect, Link } from 'react-router-dom';
-import Aux from '../../../hoc/Aux';
+import { Navigate, Link } from 'react-router-dom';
 // redux
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/auth/actions';
@@ -27,7 +26,7 @@ const Form = (prop) => {
   }
   let redirect = null;
   if (prop.isAuthenticated) {
-    redirect = <Redirect to={prop.authRedirectPath} />;
+    redirect = <Navigate to={prop.authRedirectPath} />;
   }
   return (
     <>

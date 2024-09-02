@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import classes from './Tour.module.scss';
 import svgSprite from '../../assets/icons.svg';
 import tempImg from '../../assets/qudra-lake.jpg';
@@ -16,7 +16,7 @@ const Tour = (props) => {
     year: 'numeric',
     day: '2-digit',
   });
-  const history = useHistory();
+  const history = useNavigate();
   return (
     <div className={classes.card}>
       <div className={classes.card__wrap}>

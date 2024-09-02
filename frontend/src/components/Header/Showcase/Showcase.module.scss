@@ -16,7 +16,7 @@
   opacity: 0.4;
 
   @include respond(tab-port) {
-    background: url(/static/media/atlantis-bg.a64ea8d2.jpg) no-repeat fixed top
+    background: url('./atlantis-bg.jpg') no-repeat fixed top
       center / 900px;
   }
   @include respond(phone) {
