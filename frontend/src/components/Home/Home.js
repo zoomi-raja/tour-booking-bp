@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import Layout from '../../hoc/Layout/Layout';
 import Tours from '../../containers/Tours/Tours';
 import Auth from '../../containers/Auth/Auth';
@@ -8,17 +8,12 @@ import User from '../../containers/User/User';
 import SearchResults from '../SearchResults/SearchResults';
 import NotFound from '../Notfound/Notfound';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Spinner from '../UI/Spinner/Spinner';
 
 // redux auth
 import { connect } from 'react-redux';
 import * as authActions from '../../store/actions/auth/actions';
 import Tourdetail from '../../containers/Tourdetail/Tourdetail';
 
-// tour detail has stripe lets lazyload
-// const Tourdetail = React.lazy(() =>
-//   import('../../containers/Tourdetail/Tourdetail')
-// );
 const router = createBrowserRouter([
   {
     path: '/',
@@ -35,10 +30,13 @@ const router = createBrowserRouter([
     ]
   }
 ]);
-const Home = function() {
+
+class Home extends React.Component {
+  render() {
     return (
       <RouterProvider router={router} />
     );
+  }
 }
 const stateToProps = (state) => {
   return {
@@ -50,4 +48,5 @@ const dispatchToProps = (dispatch) => {
     checkAuthStatus: dispatch(authActions.authCheckState()),
   };
 };
-export default Home;
+export default connect(stateToProps, dispatchToProps)(Home);
+
