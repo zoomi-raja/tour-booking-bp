@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import Spinner from '../UI/Spinner/Spinner';
 import Layout from '../../hoc/Layout/Layout';
 import Tours from '../../containers/Tours/Tours';
 import Auth from '../../containers/Auth/Auth';
@@ -34,7 +35,9 @@ const router = createBrowserRouter([
 class Home extends React.Component {
   render() {
     return (
-      <RouterProvider router={router} />
+      <Suspense fallback={<Spinner />}>
+        <RouterProvider router={router} />
+      </Suspense>
     );
   }
 }
