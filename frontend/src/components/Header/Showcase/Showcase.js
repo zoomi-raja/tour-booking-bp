@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Showcase.module.scss';
-const showcase = (props) => (
+const showcase = () => (
   <div className={classes.showcase}>
     <div className={classes.showcase__container}>
       <div className={classes.showcase__content}>

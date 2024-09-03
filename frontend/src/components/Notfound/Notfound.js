@@ -1,5 +1,5 @@
 import React from 'react';
-const notFound = (props) => (
+const notFound = () => (
   <div style={{ position: 'relative', height: '80vh', fontSize: '5rem' }}>
     <span
       style={{

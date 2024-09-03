@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import Home from './components/Home/Home';
 
 // redux setup
@@ -24,9 +23,7 @@ const store = createStore(
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
         <Home />
-      </BrowserRouter>
     </Provider>
   );
 }

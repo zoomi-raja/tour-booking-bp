@@ -8,6 +8,7 @@ import TourStats from '../../components/TourStats/TourStats';
 import Map from '../../components/Map/Map';
 import Reviews from '../../components/Reviews/Reviews';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import { useParams } from 'react-router-dom';
 class Tourdetail extends React.Component {
   constructor(props) {
     super(props);
@@ -21,8 +22,9 @@ class Tourdetail extends React.Component {
     this.makeApiCall();
   }
   makeApiCall = async (debug = false) => {
+    const params = useParams();
     try {
-      const tour = await axios.get(`/tours/${this.props.match.params.id}`);
+      const tour = await axios.get(`/tours/${params.id}`);
       this.setState({
         tour: tour.data.data.tour,
         loading: false,

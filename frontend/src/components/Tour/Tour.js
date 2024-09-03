@@ -76,7 +76,7 @@ const Tour = (props) => {
               btnType="btn--secondary"
               btnSize="btn--small"
               clicked={() => {
-                history.push(`/tour/${props.tour.id}`);
+                history(`/tour/${props.tour.id}`);
               }}
             >
               Details

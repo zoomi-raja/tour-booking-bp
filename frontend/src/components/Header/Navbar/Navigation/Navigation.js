@@ -15,14 +15,14 @@ const navigation = (props) => {
     <ul className={classes.menu}>
       <li>
         <span>
-          <NavLink to="/auth/login" activeClassName={classes.active}>
+          <NavLink to="/auth/login" className={({isActive}) => (isActive ? classes.active : 'none')}>
             login
           </NavLink>
         </span>
       </li>
       <li>
         <span>
-          <NavLink to="/auth/signup" activeClassName={classes.active}>
+          <NavLink to="/auth/signup" className={({isActive}) => (isActive ? classes.active : 'none')}>
             signup
           </NavLink>
         </span>

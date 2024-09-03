@@ -7,42 +7,38 @@ import Payment from '../Payment/Payment';
 import User from '../../containers/User/User';
 import SearchResults from '../SearchResults/SearchResults';
 import NotFound from '../Notfound/Notfound';
-import { Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Spinner from '../UI/Spinner/Spinner';
 
 // redux auth
 import { connect } from 'react-redux';
 import * as authActions from '../../store/actions/auth/actions';
+import Tourdetail from '../../containers/Tourdetail/Tourdetail';
 
 // tour detail has stripe lets lazyload
-const Tourdetail = React.lazy(() =>
-  import('../../containers/Tourdetail/Tourdetail')
-);
-
-class Home extends React.Component {
-  render() {
-    return (
-      <Layout>
-        <Suspense fallback={<Spinner />}>
-          <Routes>
-            <Route
-              path="/tour/:id"
-              component={(props) => (
-                <Tourdetail {...props} key={window.location.pathname} />
-              )}
-            />
-            <Route path="/search" component={SearchResults} />
-            <Route path="/auth" component={Auth} />
-            <Route path="/logout" exact component={Logout} />
-            <Route path="/payment/:sessionID" component={Payment} />
-            <Route path="/user" component={User} />
-            <Route path="/" exact component={Tours} />
-            <Route path="*" component={NotFound} />
-          </Routes>
-        </Suspense>
-      </Layout>
-    );
+// const Tourdetail = React.lazy(() =>
+//   import('../../containers/Tourdetail/Tourdetail')
+// );
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    errorElement: <NotFound />,
+    children: [
+      { index: true, element: <Tours />},
+      { path: 'search', element: <SearchResults />},
+      { path: 'auth/*', element: <Auth />},
+      { path: 'logout', element: <Logout />},
+      { path: 'payment/:sessionID', element: <Payment />},
+      { path: 'user', element: <User />},
+      { path: '/tour/:id', element: <Tourdetail />}
+    ]
   }
+]);
+const Home = function() {
+    return (
+      <RouterProvider router={router} />
+    );
 }
 const stateToProps = (state) => {
   return {
@@ -54,4 +50,4 @@ const dispatchToProps = (dispatch) => {
     checkAuthStatus: dispatch(authActions.authCheckState()),
   };
 };
-export default connect(stateToProps, dispatchToProps)(Home);
+export default Home;
