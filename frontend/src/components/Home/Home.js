@@ -9,11 +9,13 @@ import User from '../../containers/User/User';
 import SearchResults from '../SearchResults/SearchResults';
 import NotFound from '../Notfound/Notfound';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import UserTours from '../../components/Tours/UserTours';
 
 // redux auth
 import { connect } from 'react-redux';
 import * as authActions from '../../store/actions/auth/actions';
 import Tourdetail from '../../containers/Tourdetail/Tourdetail';
+import UserAccount from '../UserAccount/UserAccount';
 
 const router = createBrowserRouter([
   {
@@ -23,10 +25,16 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Tours />},
       { path: 'search', element: <SearchResults />},
-      { path: 'auth/*', element: <Auth />},
+      { path: 'auth', element: <Auth />, children: [
+        { path: 'login', element: <Auth />},
+        { path: 'logout', element: <Auth />},
+      ]},
       { path: 'logout', element: <Logout />},
       { path: 'payment/:sessionID', element: <Payment />},
-      { path: 'user', element: <User />},
+      { path: 'user', element: <User />, children: [
+        { path: 'account', element: <UserAccount />},
+        { path: 'tours', element: <UserTours />},
+      ]},
       { path: '/tour/:id', element: <Tourdetail />}
     ]
   }

@@ -3,7 +3,7 @@ import classes from './Tours.module.scss';
 import TourCard from './TourCard/TourCard';
 import axios from '../../utils/Axios';
 
-class Tours extends React.Component {
+class UserTours extends React.Component {
   state = {
     bookings: [],
   };
@@ -28,4 +28,4 @@ class Tours extends React.Component {
     );
   }
 }
-export default Tours;
+export default UserTours;
