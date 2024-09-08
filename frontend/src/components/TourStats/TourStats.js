@@ -60,7 +60,7 @@ const TourStats = (props) => {
       setStripeState({ sessionDetail, stripe });
       toggleLoading(false);
     }
-    setStripe();
+    // setStripe();
     return () => {
       setStripeState({
         sessionDetail: {},

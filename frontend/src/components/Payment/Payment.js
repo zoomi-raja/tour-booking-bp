@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Spinner from '../UI/Spinner/Spinner';
 import axios from '../../utils/Axios';
+import { useNavigate } from 'react-router-dom';
 const Payment = (props) => {
+  const navigate = useNavigate();
   useEffect(() => {
     (async () => {
       axios.defaults.headers.common[
@@ -10,7 +12,7 @@ const Payment = (props) => {
       await axios.post(`/bookings/success/${props.match.params.sessionID}`);
       toggleLoading(false);
       setTimeout(() => {
-        props.history.push('/');
+        navigate('/');
       }, 1000);
     })();
   }, [props.match.params.sessionID, props.history]);
