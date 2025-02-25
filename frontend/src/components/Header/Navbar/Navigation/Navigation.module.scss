@@ -1,4 +1,4 @@
-@import '../../../../utility';
+@use "../../../../utility" as *;
 .nav_list {
   @include respond(phone) {
     display: none;

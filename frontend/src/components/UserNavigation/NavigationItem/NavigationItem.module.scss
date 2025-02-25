@@ -1,4 +1,4 @@
-@import '../../../utility.scss';
+@use "../../../utility" as *;
 .navigation {
   &__item {
     margin: 0 1rem;

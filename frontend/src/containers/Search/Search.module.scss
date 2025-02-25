@@ -1,4 +1,4 @@
-@import '../../utility.scss';
+@use "../../utility" as *;
 .container {
   flex: 0 0 50%;
   @include respond(phone) {

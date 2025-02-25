@@ -1,4 +1,4 @@
-@import '../../utility.scss';
+@use "../../utility" as *;
 .container {
   display: flex;
   height: 70vh;

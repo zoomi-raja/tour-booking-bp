@@ -1,4 +1,4 @@
-@import '../../../../utility.scss';
+@use "../../../../utility" as *;
 .drawer {
   position: fixed;
   width: 280px;

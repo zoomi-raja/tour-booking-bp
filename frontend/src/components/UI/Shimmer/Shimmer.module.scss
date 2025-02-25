@@ -1,4 +1,4 @@
-@import '../../../utility.scss';
+@use "../../../utility" as *;
 .loader {
   display: flex;
   &__item {

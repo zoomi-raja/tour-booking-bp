@@ -1,4 +1,4 @@
-@import 'utility';
+@use "utility" as *;
 :root {
   --main-color: #ffbc00;
   --secondary-color: #333;
@@ -27,7 +27,7 @@ html {
   }
 }
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   line-height: 1.5;
 }
 img {

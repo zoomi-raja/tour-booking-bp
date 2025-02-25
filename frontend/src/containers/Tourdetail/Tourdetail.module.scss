@@ -1,4 +1,4 @@
-@import '../../utility.scss';
+@use "../../utility" as *;
 .detail_cover {
   height: 30vh;
   img {

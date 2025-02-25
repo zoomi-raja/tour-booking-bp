@@ -1,4 +1,4 @@
-@import '../../utility.scss';
+@use "../../utility" as *;
 .sectionHolder {
   &__title {
     text-transform: capitalize;

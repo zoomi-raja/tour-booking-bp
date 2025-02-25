@@ -1,4 +1,4 @@
-@import '../../utility.scss';
+@use "../../utility" as *;
 .key-details {
   color: var(--secondary-color);
   display: flex;

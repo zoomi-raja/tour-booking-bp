@@ -1,4 +1,4 @@
-@import '../../utility.scss';
+@use "../../utility" as *;
 .card {
   position: relative;
   display: flex;
@@ -13,7 +13,7 @@
     margin-bottom: 2rem;
   }
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     display: block;
     background-color: var(--main-color);
