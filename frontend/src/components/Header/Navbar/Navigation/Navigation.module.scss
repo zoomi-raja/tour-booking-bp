@@ -1,9 +1,11 @@
 @use "../../../../utility" as *;
 .nav_list {
+  & {
+    position: relative;
+  }
   @include respond(phone) {
     display: none;
   }
-  position: relative;
   &:hover .subMenu {
     display: block;
   }
