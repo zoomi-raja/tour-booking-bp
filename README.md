@@ -13,7 +13,7 @@ A javascript/React based project. I was thinking about what to do during the pan
 This project is basically a collection of pointers to JavaScript/React-related tips that can be easily skipped or revisited over time. Any beginner developer who wants to explore the world of JavaScript and learn how things can be done the “JS way” can go through this project and gain insights.
 
 **project URL**
-https://travelmate.herokuapp.com/
+Not Available As Of now
 
 **postman setting to save auto token**
 ```
